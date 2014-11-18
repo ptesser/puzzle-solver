@@ -1,0 +1,18 @@
+# ignore the folder/view configuration in OSx
+*.DS_Store
+.DS_Store
+
+# ignore folder .idea because doesn't depends from the project, but from the IDE that I use
+.idea
+
+progr_concorrente_distribuita.iml
+
+# ignore file in output from LaTex compilation
+
+*.log
+*.out
+*.aux
+*.toc
+*.lot
+*.lof
+
