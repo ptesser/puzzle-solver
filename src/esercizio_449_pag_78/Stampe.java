@@ -103,21 +103,27 @@ public class Stampe {
         System.out.println("End fifth main");
 
         System.out.println("Start sixth main");
-
+        // X x = new C();
+        // C c = (C)x;
+        // B b = new D();
+        // c.f(b);
         /**
-         * Il codice precedente genera il seguente output: A.g() - A.g()
+         * Il codice precedente genera il seguente output: C.f(Object)
          */
         System.out.println("End sixth main");
 
         System.out.println("Start seventh main");
-
+        // X x = new C();
+        // B b = new B();
+        // x.f(b);
         /**
-         * Il codice precedente genera il seguente output: A.g() - A.g()
+         * Il codice precedente non compila perchè il tipo statico di x non possiede un metodo f a un parametro
          */
         System.out.println("End seventh main");
 
         System.out.println("Start eighth main");
-
+        // A a = new D();
+        // C c = (C)(a.f(a));
         /**
          * Il codice precedente genera il seguente output: A.g() - A.g()
          */
