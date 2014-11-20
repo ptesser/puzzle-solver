@@ -1,0 +1,3 @@
+ID  c   nord    sud est ovest
+M1  M   VUOTO   E1  O1  VUOTO
+E1  E   VUOTO   _1  G1  M1
