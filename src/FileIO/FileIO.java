@@ -34,7 +34,7 @@ public class FileIO {
      */
     public static void main(String[] args) {
         // String inputFile = args[0];
-        String inputFile = "../../../../../input_files/test1.txt"; // inserisco una percorso statico
+        String inputFile = "../../../../input_files/test1.txt"; // inserisco una percorso statico
         // String outputFile = args[1];
 
         Path inputPath = Paths.get(inputFile);
