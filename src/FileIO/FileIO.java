@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 /*
  * Questa programma prende come parametri due file,
  * legge il contenuto dal primo e lo scrive nel secondo
@@ -34,34 +35,47 @@ public class FileIO {
      */
     public static void main(String[] args) {
         // String inputFile = args[0];
-        String inputFile = "../../../../input_files/test1.txt"; // inserisco una percorso statico
         // String outputFile = args[1];
-
+        /*
+        String inputFile = "/Users/ptesser/Documents/repository/Bitbucket/progr_concorrente_distribuita/input_files/test2.txt"; // inserisco una percorso statico
         Path inputPath = Paths.get(inputFile);
         // Path outputPath = Paths.get(outputFile);
-        String inputContent = readContent(inputPath);
-        System.out.println(inputContent);
+
+        ArrayList<String> inputContent = readContent(inputPath);
+
+
+        // stampa il numero di elementi nella lista
+
+        int dimArray = inputContent.size();
+        for (int i = 0; i < dimArray; ++i){
+            System.out.println(inputContent.get(i));
+        }
         // writeContent(outputPath, inputContent);
 
         /**
          * Mi trova il percorso di dove la mia classe che sta venendo eseguita si trova
          */
-        ClassLoader loader = FileIO.class.getClassLoader();
-        System.out.println(loader.getResource("FileIO/FileIO.class"));
+        // ClassLoader loader = FileIO.class.getClassLoader();
+        // System.out.println(loader.getResource("FileIO/FileIO.class"));
 
     }
 
-    private static String readContent(Path inputPath) {
-        StringBuilder content = new StringBuilder();
+    private static ArrayList<String> readContent(Path inputPath) {
+        ArrayList<String> content = new ArrayList<>(0);
+
         try (BufferedReader reader = Files.newBufferedReader(inputPath, charset)) {
             String line = null;
+            int i = 0;
             while ((line = reader.readLine()) != null) {
-                content.append(line);
+                content.add(line);
+                ++i;
             }
         } catch (IOException e) {
             System.err.println(e);
         }
-        return content.toString();
+        return content;
     }
+
+
 
 }
