@@ -6,4 +6,9 @@ package PuzzleSolver.Puzzle;
  */
 public class PuzzleCarattere extends Puzzle { // se cambiata in interfaccia, modificare in implements
 
+    public class PezzoCarattere extends Pezzo{
+
+
+    }
+
 }
