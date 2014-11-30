@@ -1,4 +1,5 @@
 package FileInputOutput;
+
 import java.io.BufferedReader;
 // import java.io.BufferedWriter;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 /**
  * FileIOMod1 Model Object
  *
- * <p>Classe che mi serve per gestire l'input e l'output da file</p>
+ * <p>Classe che mi serve per gestire l'input e l'output da file tramite un ArrayList</p>
  * @author Tesser Paolo
  * @version 0.1
  */
