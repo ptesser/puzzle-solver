@@ -33,7 +33,46 @@ public class PuzzleCarattere extends Puzzle { // se cambiata in interfaccia, mod
 
     }
 
-    private ArrayList<PezzoCarattere> puzzleCarattere = new ArrayList<>(0);
+    // MEMBRI PRIVATI
+    private ArrayList<Pezzo> puzzleCarattere = new ArrayList<>(0);
+    private int numCol;
+    private int numRow;
 
+    // METODI PUBBLICI
+    public PuzzleCarattere(ArrayList<String> inputContent){
 
+        int i = 0; // variabile di incremento necessaria per aggiungere gli elementi estratti
+        // dall'ArrayList di stringhe in input dal file, all'ArrayList di Pezzi
+
+        for (String s : inputContent){
+            String[] splitInputContent = s.split("\t"); // perchè con gli spazi si e con la tabulazione no? \t
+
+            String id = splitInputContent[0];
+            char c = (splitInputContent[1]).charAt(0); // .replace(" ","")
+            String idNord = splitInputContent[2];
+            String idSud = splitInputContent[3];
+            String idEst = splitInputContent[4];
+            String idOvest = splitInputContent[5];
+
+            PezzoCarattere pezzoCorrente = new PuzzleCarattere.PezzoCarattere(id, idNord,idSud, idEst, idOvest, c);
+            this.puzzleCarattere.add(i,pezzoCorrente);
+            i += 1;
+
+            /**
+                Conto il numero di righe e colonne che formano il puzzle.
+                Controllo l'idNord per trovare il numero di colonne.
+                Controllo l'idOvest per trovare il numero di righe.
+             */
+            if (idNord.equals("VUOTO")){
+                numCol += 1;
+            }
+            if (idOvest.equals("VUOTO")){
+                numRow += 1;
+            }
+        }
+    }
+
+    public ArrayList<Pezzo> getPuzzleElement(){ return this.puzzleCarattere; }
+    public int getNumCol(){ return this.numCol; }
+    public int getNumRow(){ return this.numRow; }
 }
