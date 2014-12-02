@@ -1,6 +1,7 @@
 package PuzzleSolver.Puzzle;
 
 // import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -16,6 +17,8 @@ public abstract class Puzzle { // scegliere se farla come interfaccia
     public abstract HashMap<String, Tile> getPuzzleElementToSolve();
     public abstract Tile[][] getPuzzleElementSolved();
     public abstract void solvePuzzle();
+    public abstract void showPuzzleTerminal();
+    public abstract ArrayList<String> convertToArrayList(); // forse meglio non metterlo in Puzzle perchè dipende da PuzzleCharacter se voglio una stringa
 
     /* METODI PUBBLICI CONCRETI della classe Puzzle */
 

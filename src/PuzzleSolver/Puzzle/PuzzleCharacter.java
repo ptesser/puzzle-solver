@@ -103,10 +103,11 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
         return this.puzzleCharacterSolved;
     }
 
-    @Override
+
     /**
-     * <p></p>
+     * <p>Algoritmo di risoluzione del puzzle.</p>
      */
+    @Override
     public void solvePuzzle() {
         // ricerco il primo elemento del puzzle (alto a sinistra, nord: VUOTO, ovest: VUOTO)
         Set set = this.puzzleCharacterToSolve.entrySet();
@@ -126,7 +127,8 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
 
         }
 
-        int lengthRow = this.getNumRow(); // la dichiaro fuori dal for così evito di fare ogni volta una chiamata di funzione
+        // le dichiaro fuori dal for così evito di fare ogni volta una chiamata di funzione
+        int lengthRow = this.getNumRow();
         int lengthCol = this.getNumCol();
 
         // riordino la colonna più a sinistra
@@ -146,6 +148,19 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
             }
         }
 
+        /*
+
+        */
+    }
+
+    /**
+     * <p>Stampa a terminale il puzzle in forma matriciale R x C.</p>
+     */
+    @Override
+    public void showPuzzleTerminal() {
+        // le dichiaro fuori dal for così evito di fare ogni volta una chiamata di funzione
+        int lengthRow = this.getNumRow();
+        int lengthCol = this.getNumCol();
 
         for (int k = 0; k < lengthRow; k++){
             for (int w = 0; w < lengthCol; w++) {
@@ -153,7 +168,28 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
             }
             System.out.println();
         }
+    }
 
+    /**
+     *
+     * @return converte il Puzzle in una ArrayList di Stringhe dove ogni stringa è il carattere del Tile
+     */
+    @Override
+    public ArrayList<String> convertToArrayList() {
 
+        ArrayList<String> puzzleOrdered = new ArrayList<>(0);
+        // le dichiaro fuori dal for così evito di fare ogni volta una chiamata di funzione
+        int lengthRow = this.getNumRow();
+        int lengthCol = this.getNumCol();
+        int i = 0;
+
+        for (int k = 0; k < lengthRow; k++){
+            for (int w = 0; w < lengthCol; w++) {
+                char temp = ((TileCharacter)this.puzzleCharacterSolved[k][w]).getCharacter();
+                puzzleOrdered.add(i,Character.toString(temp));
+                i++;
+            }
+        }
+        return puzzleOrdered;
     }
 }
