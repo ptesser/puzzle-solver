@@ -33,7 +33,7 @@ public class PuzzleCarattere extends Puzzle { // se cambiata in interfaccia, mod
 
     }
 
-    private ArrayList<PezzoCarattere> puzzle = new ArrayList<>(0);
+    private ArrayList<PezzoCarattere> puzzleCarattere = new ArrayList<>(0);
 
 
 }
