@@ -137,7 +137,7 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
             this.puzzleCharacterSolved[j+1][0] = newTileSud;
         }
 
-        for (int j = 0; j < (lengthRow-1); j++){
+        for (int j = 0; j < (lengthRow); j++){
             for (int z = 0; z < (lengthCol-1); z++){
                 Tile nowTile = this.puzzleCharacterSolved[j][z];
                 String idTileEast = nowTile.getIdEast();
@@ -145,13 +145,15 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
                 this.puzzleCharacterSolved[j][z+1] = newTileEast;
             }
         }
-        /*
+
+
         for (int k = 0; k < lengthRow; k++){
             for (int w = 0; w < lengthCol; w++) {
                 System.out.print(((TileCharacter)this.puzzleCharacterSolved[k][w]).getCharacter());
             }
             System.out.println();
         }
-        */
+
+
     }
 }

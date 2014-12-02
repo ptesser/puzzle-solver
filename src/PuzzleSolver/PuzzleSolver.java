@@ -1,6 +1,6 @@
 package PuzzleSolver;
 
-import FileInputOutput.FileIOMod1;
+import FileInputOutput.*;
 import PuzzleSolver.Puzzle.*;
 
 import java.nio.file.Path;
