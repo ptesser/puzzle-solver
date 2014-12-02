@@ -24,7 +24,7 @@ public class PuzzleSolver {
         Path inputPath = Paths.get(inputFile);
         ArrayList<String> inputContent = FileIOMod1.readContent(inputPath);
 
-        Puzzle puzzle1 = new PuzzleCarattere(inputContent);
+        Puzzle puzzle1 = new PuzzleCharacter(inputContent);
         System.out.println("num rows: " + puzzle1.getNumRow());
         System.out.println("num columns: " + puzzle1.getNumCol());
         System.out.println("Dim HashMap: " + puzzle1.getPuzzleElementToSolve().size());

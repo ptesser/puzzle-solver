@@ -13,8 +13,9 @@ public abstract class Puzzle { // scegliere se farla come interfaccia
     private int numRow;
 
     /* METODI PUBBLICI ASTRATTI della classe Puzzle */
-    public abstract HashMap<String, Pezzo> getPuzzleElementToSolve();
-    public abstract Pezzo[][] getPuzzleElementSolved();
+    public abstract HashMap<String, Tile> getPuzzleElementToSolve();
+    public abstract Tile[][] getPuzzleElementSolved();
+    public abstract void solvePuzzle();
 
     /* METODI PUBBLICI CONCRETI della classe Puzzle */
 
