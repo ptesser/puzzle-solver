@@ -1,6 +1,7 @@
 package PuzzleSolver.Puzzle;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author Tesser Paolo
@@ -10,10 +11,14 @@ public class PuzzleCarattere extends Puzzle { // se cambiata in interfaccia, mod
 
     public class PezzoCarattere extends Pezzo{
 
+        /* MEMBRI PRIVATI della classe PezzoCarattere */
         private char carattere;
 
+        /* METODI PUBBLICI della classe PezzoCarattere */
         /**
-         * <p>Costruttore della classe interna PezzoCarattere</p>
+         * <p>Costruttore della classe interna PezzoCarattere che estende la classe Pezzo con un membro che dipende dal tipo
+         * di Puzzle che si vuole comporre. In questo caso un Puzzle di caratteri alfanumerici.</p>
+         *
          * @param id identificatore univoco del pezzo che stiamo considerando
          * @param idNord identificatore univoco del pezzo a nord di quello che stiamo considerando
          * @param idSud identificatore univoco del pezzo a sud di quello che stiamo considerando
@@ -33,19 +38,24 @@ public class PuzzleCarattere extends Puzzle { // se cambiata in interfaccia, mod
 
     }
 
-    // MEMBRI PRIVATI
-    private ArrayList<Pezzo> puzzleCarattere = new ArrayList<>(0);
-    private int numCol;
-    private int numRow;
+    /* MEMBRI PRIVATI della classe PuzzleCarattere */
+    private HashMap<String, Pezzo> puzzleCarattereToSolve = new HashMap<>(0);
+    private Pezzo[][] puzzleCarattereSolved;
 
-    // METODI PUBBLICI
+    /* METODI PUBBLICI della classe PuzzleCarattere */
+
+    /**
+     * <p>Costruttore a un parametro di PuzzleCarattere.</p>
+     * @param inputContent riceve un ArrayList di Stringhe proveniente dal file in input. Ogni elemento verrà splittato
+     *                     e generato un oggetto PezzoCarattere contenente le info prelevate dala stringa.
+     */
     public PuzzleCarattere(ArrayList<String> inputContent){
 
-        int i = 0; // variabile di incremento necessaria per aggiungere gli elementi estratti
-        // dall'ArrayList di stringhe in input dal file, all'ArrayList di Pezzi
+        int numCol = 0;
+        int numRow = 0;
 
         for (String s : inputContent){
-            String[] splitInputContent = s.split("\t"); // perchè con gli spazi si e con la tabulazione no? \t
+            String[] splitInputContent = s.split("\\t");
 
             String id = splitInputContent[0];
             char c = (splitInputContent[1]).charAt(0); // .replace(" ","")
@@ -54,9 +64,8 @@ public class PuzzleCarattere extends Puzzle { // se cambiata in interfaccia, mod
             String idEst = splitInputContent[4];
             String idOvest = splitInputContent[5];
 
-            PezzoCarattere pezzoCorrente = new PuzzleCarattere.PezzoCarattere(id, idNord,idSud, idEst, idOvest, c);
-            this.puzzleCarattere.add(i,pezzoCorrente);
-            i += 1;
+            Pezzo pezzoCorrente = new PuzzleCarattere.PezzoCarattere(id, idNord,idSud, idEst, idOvest, c);
+            this.puzzleCarattereToSolve.put(id,pezzoCorrente);
 
             /**
                 Conto il numero di righe e colonne che formano il puzzle.
@@ -70,9 +79,27 @@ public class PuzzleCarattere extends Puzzle { // se cambiata in interfaccia, mod
                 numRow += 1;
             }
         }
+        // imposto i campi dati della classe Puzzle che viene estesa
+        this.setNumCol(numCol);
+        this.setNumRow(numRow);
+
+        this.puzzleCarattereSolved = new Pezzo[numRow][numCol];
     }
 
-    public ArrayList<Pezzo> getPuzzleElement(){ return this.puzzleCarattere; }
-    public int getNumCol(){ return this.numCol; }
-    public int getNumRow(){ return this.numRow; }
+    /**
+     *
+     * @return il membro che contiene il Puzzle non ordinato in una collection HashMap
+     */
+    public HashMap<String, Pezzo> getPuzzleElementToSolve(){
+        return this.puzzleCarattereToSolve;
+    }
+
+    /**
+     *
+     * @return il membro che contiene il Puzzle risolto in un array bidimensionale
+     */
+    public Pezzo[][] getPuzzleElementSolved(){
+        return this.puzzleCarattereSolved;
+    }
+
 }

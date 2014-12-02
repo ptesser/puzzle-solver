@@ -7,12 +7,15 @@ package PuzzleSolver.Puzzle;
  */
 
 public abstract class Pezzo {
+
+    /* MEMBRI STATICI della classe Pezzo */
     private String id;
     private String idNord;
     private String idSud;
     private String idEst;
     private String idOvest;
 
+    /* METODI PUBBLICI CONCRETI della classe Pezzo */
     /**
      * <p>Costruttore della classe astratta Pezzo, richiamato solo dalle sottoclassi.</p>
      * @param id identificatore univoco del pezzo che stiamo considerando
@@ -32,26 +35,36 @@ public abstract class Pezzo {
     /**
      * @return l'identificatore del pezzo che stiamo considerando
      */
-    public String getId(){ return this.id; }
+    public String getId(){
+        return this.id;
+    }
 
     /**
      * @return l'identificatore del pezzo a nord di quello che stiamo considerando
      */
-    public String getIdNord(){ return this.idNord; }
+    public String getIdNord(){
+        return this.idNord;
+    }
 
     /**
      * @return l'identificatore del pezzo a sud di quello che stiamo considerando
      */
-    public String getIdSud(){ return this.idSud; }
+    public String getIdSud(){
+        return this.idSud;
+    }
 
     /**
      * @return l'identificatore del pezzo a est di quello che stiamo considerando
      */
-    public String getIdEst(){ return this.idEst; }
+    public String getIdEst(){
+        return this.idEst;
+    }
 
     /**
      * @return l'identificatore del pezzo a ovest di quello che stiamo considerando
      */
-    public String getIdOvest(){ return this.idOvest; }
+    public String getIdOvest(){
+        return this.idOvest;
+    }
 
 }
