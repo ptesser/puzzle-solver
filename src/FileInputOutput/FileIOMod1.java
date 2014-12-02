@@ -43,5 +43,8 @@ public class FileIOMod1 {
     }
 
     // TO DO - implementazione del metodo writeContent
+    public static void writeContent(Path outputFile, ArrayList<String> content,int numRow, int numCol){
+        System.out.println("Scrittura eseguita");
+    }
 
 }
