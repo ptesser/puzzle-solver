@@ -25,6 +25,10 @@ public class PuzzleSolver {
         ArrayList<String> inputContent = FileIOMod1.readContent(inputPath);
 
         Puzzle puzzle1 = new PuzzleCarattere(inputContent);
+        System.out.println("num rows: " + puzzle1.getNumRow());
+        System.out.println("num columns: " + puzzle1.getNumCol());
+        System.out.println("Dim HashMap: " + puzzle1.getPuzzleElementToSolve().size());
+        System.out.println("Dim matrix [][]: " + puzzle1.getPuzzleElementSolved().length * puzzle1.getPuzzleElementSolved()[0].length);
 
     }
 }
