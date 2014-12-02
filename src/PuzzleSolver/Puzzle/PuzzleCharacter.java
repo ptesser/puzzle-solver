@@ -1,6 +1,7 @@
 package PuzzleSolver.Puzzle;
 
 import java.util.*;
+import Solver.*;
 
 /**
  * @author Tesser Paolo
@@ -109,48 +110,7 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
      */
     @Override
     public void solvePuzzle() {
-        // ricerco il primo elemento del puzzle (alto a sinistra, nord: VUOTO, ovest: VUOTO)
-        Set set = this.puzzleCharacterToSolve.entrySet();
-        Iterator i = set.iterator();
-        boolean findFirstTile = false;
-
-        while (i.hasNext() && !findFirstTile){
-            Map.Entry currIter = (Map.Entry) i.next();
-            Tile currTile = (Tile) currIter.getValue();
-            String idNorth = currTile.getIdNorth();
-            String idWest = currTile.getIdWest();
-
-            if (idNorth.equals("VUOTO") && idWest.equals("VUOTO")){
-                findFirstTile = true;
-                this.puzzleCharacterSolved[0][0] = currTile;
-            }
-
-        }
-
-        // le dichiaro fuori dal for così evito di fare ogni volta una chiamata di funzione
-        int lengthRow = this.getNumRow();
-        int lengthCol = this.getNumCol();
-
-        // riordino la colonna più a sinistra
-        for (int j = 0; j < (lengthRow - 1); j++){
-            Tile nowTile = this.puzzleCharacterSolved[j][0];
-            String idTileSud = nowTile.getIdSouth();
-            Tile newTileSud = this.puzzleCharacterToSolve.get(idTileSud);
-            this.puzzleCharacterSolved[j+1][0] = newTileSud;
-        }
-
-        for (int j = 0; j < (lengthRow); j++){
-            for (int z = 0; z < (lengthCol-1); z++){
-                Tile nowTile = this.puzzleCharacterSolved[j][z];
-                String idTileEast = nowTile.getIdEast();
-                Tile newTileEast = this.puzzleCharacterToSolve.get(idTileEast);
-                this.puzzleCharacterSolved[j][z+1] = newTileEast;
-            }
-        }
-
-        /*
-
-        */
+        this.getStrategy().executeSolve(this);
     }
 
     /**

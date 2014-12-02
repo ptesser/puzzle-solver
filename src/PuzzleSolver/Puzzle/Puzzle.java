@@ -1,6 +1,8 @@
 package PuzzleSolver.Puzzle;
 
 // import java.util.ArrayList;
+import Solver.SolverStrategy;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,9 +11,10 @@ import java.util.HashMap;
  * @version 0.1
  */
 public abstract class Puzzle { // scegliere se farla come interfaccia
-    /* MEMBRI STATICI della classe Puzzle */
+    /* MEMBRI PRIVATI della classe Puzzle */
     private int numCol;
     private int numRow;
+    private SolverStrategy strategy;
 
     /* METODI PUBBLICI ASTRATTI della classe Puzzle */
     public abstract HashMap<String, Tile> getPuzzleElementToSolve();
@@ -21,6 +24,22 @@ public abstract class Puzzle { // scegliere se farla come interfaccia
     public abstract ArrayList<String> convertToArrayList(); // forse meglio non metterlo in Puzzle perchè dipende da PuzzleCharacter se voglio una stringa
 
     /* METODI PUBBLICI CONCRETI della classe Puzzle */
+
+    /**
+     *
+     * @param s
+     */
+    public void setStrategy(SolverStrategy s){
+        this.strategy = s;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public SolverStrategy getStrategy(){
+        return this.strategy;
+    }
 
     /**
      *
