@@ -30,5 +30,6 @@ public class PuzzleSolver {
         System.out.println("Dim HashMap: " + puzzle1.getPuzzleElementToSolve().size());
         System.out.println("Dim matrix [][]: " + puzzle1.getPuzzleElementSolved().length * puzzle1.getPuzzleElementSolved()[0].length);
 
+        puzzle1.solvePuzzle();
     }
 }
