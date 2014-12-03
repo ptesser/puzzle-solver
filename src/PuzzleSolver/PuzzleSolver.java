@@ -1,8 +1,8 @@
 package PuzzleSolver;
 
 import FileInputOutput.*;
-import PuzzleSolver.Puzzle.*;
-
+import Puzzle.*;
+import Solver.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -34,6 +34,7 @@ public class PuzzleSolver {
 
         System.out.println("=====================");
 
+        puzzle1.setStrategy(new SolverAlgStrategy());
         puzzle1.solvePuzzle();
         puzzle1.showPuzzleTerminal();
 
