@@ -1,7 +1,7 @@
 package PuzzleSolver;
 
 import FileInputOutput.*;
-import PuzzleSolver.Puzzle.*;
+import Puzzle.*;
 import Solver.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;

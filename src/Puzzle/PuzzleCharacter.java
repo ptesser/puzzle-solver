@@ -1,7 +1,6 @@
-package PuzzleSolver.Puzzle;
+package Puzzle;
 
 import java.util.*;
-import Solver.*;
 
 /**
  * @author Tesser Paolo

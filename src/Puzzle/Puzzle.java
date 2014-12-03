@@ -1,4 +1,4 @@
-package PuzzleSolver.Puzzle;
+package Puzzle;
 
 // import java.util.ArrayList;
 import Solver.SolverStrategy;

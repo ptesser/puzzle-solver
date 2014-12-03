@@ -1,7 +1,7 @@
 package Solver;
 
-import PuzzleSolver.Puzzle.PuzzleCharacter;
-import PuzzleSolver.Puzzle.Tile;
+import Puzzle.PuzzleCharacter;
+import Puzzle.Tile;
 
 import java.util.Iterator;
 import java.util.Map;

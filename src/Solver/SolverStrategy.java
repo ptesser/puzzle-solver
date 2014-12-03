@@ -1,6 +1,6 @@
 package Solver;
 
-import PuzzleSolver.Puzzle.PuzzleCharacter;
+import Puzzle.PuzzleCharacter;
 
 /**
  * @author Tesser Paolo

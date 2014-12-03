@@ -1,4 +1,4 @@
-package PuzzleSolver.Puzzle;
+package Puzzle;
 
 /**
  * @author Tesser Paolo
