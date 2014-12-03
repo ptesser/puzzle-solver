@@ -1,7 +1,7 @@
 package FileInputOutput;
 
 import java.io.BufferedReader;
-// import java.io.BufferedWriter;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -36,15 +36,41 @@ public class FileIOMod1 {
                 content.add(line);
                 ++i;
             }
+
+            System.out.println("Read completed");
+
         } catch (IOException e) {
             System.err.println(e);
         }
         return content;
     }
 
-    // TO DO - implementazione del metodo writeContent
     public static void writeContent(Path outputFile, ArrayList<String> content,int numRow, int numCol){
-        System.out.println("Scrittura eseguita");
+        try (BufferedWriter writer = Files.newBufferedWriter(outputFile, charset)) {
+            for (String s : content){ // testo del puzzle riordinato in una sola riga
+                writer.write(s);
+            }
+            writer.write("\n\n");
+
+            int i = 0; // contatore che mi serve per sapere quando andare a capo e continuare la stampa su una nuova riga per formare la matrice
+            for (String s : content){ // testo del puzzle in forma matriciale
+                if (i >= numCol){
+                    writer.write("\n");
+                    i = 0;
+                }
+                writer.write(s);
+                i++;
+            }
+
+            writer.write("\n\n");
+            writer.write(numRow + " " + numCol); // R x C
+
+            System.out.println("Write completed");
+
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+
     }
 
 }
