@@ -4,6 +4,7 @@
 
 # ignore folder .idea because doesn't depends from the project, but from the IDE that I use
 .idea
+out
 
 progr_concorrente_distribuita.iml
 
