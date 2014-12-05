@@ -21,13 +21,29 @@ Di seguito vengono esposte le seguenze che vengo eseguite, correlate da dei graf
 
 	\begin{enumerate}
 		\item \textbf{Ricerco il primo elemento del puzzle (quello in alto a sinistra).} \\
-Scorro quindi una sola volta la tavola hash per cercare il tassello che ha id nord e id ovest uguale alla stringa VUOTO. \\
-Una volta trovato salvo il pezzo trovato nella prima posizione dell'array bidimensionale.
-
+Per fare ciò scorro una sola volta la tavola hash per cercare il tassello che ha id nord e id ovest uguale alla stringa VUOTO. \\
+Una volta trovato salvo il pezzo nella prima posizione dell'array bidimensionale.
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=15cm]{img/algpuzzle_step1.png}
+		\end{figure}
+		
 		\item \textbf{Ordino la colonna più a sinistra (quella con i tasselli aventi id ovest uguale alla stringa VUOTO).} \\
-TO DO
+Prendo l'elemento trovato al passo successivo, mi estraggo l'id sud di esso e tramite i metodi della tavola hash mi ricavo il tassello reale a cui corrisponde. \\
+Una volta estratto lo inserisco nella posizione corretta. \\
+Continuo così da quello appena trovato fino a quando non trovo tutti quello sottostanti.
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=15cm]{img/algpuzzle_step1.png}
+		\end{figure}
+
 		\item \textbf{Ordino tutte le righe.} \\
-TO DO
+Dopo aver ricavato tutta la prima colonna, eseguo secondo lo stesso principio anche la risoluzione per le righe, procedendo però sta volta con la ricerca del pezzo successivo a destra tramite l'id est.
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=15cm]{img/algpuzzle_step1.png}
+		\end{figure}
+
 	\end{enumerate}
 
 
