@@ -2,7 +2,6 @@ package Puzzle;
 
 /**
  * @author Tesser Paolo
- * @version 0.1
  *
  */
 
@@ -31,39 +30,39 @@ public abstract class Tile {
         this.idEast = idEast;
         this.idWest = idWest;
     }
-
+    /* Tutti i metodi getXXX vengono firmati come final perché non si deve permetterne la ridefinizione in sottoclassi*/
     /**
      * @return l'identificatore del tile che stiamo considerando
      */
-    public String getId(){
+    public final String getId(){
         return this.id;
     }
 
     /**
      * @return l'identificatore del tile a nord di quello che stiamo considerando
      */
-    public String getIdNorth(){
+    public final String getIdNorth(){
         return this.idNorth;
     }
 
     /**
      * @return l'identificatore del tile a sud di quello che stiamo considerando
      */
-    public String getIdSouth(){
+    public final String getIdSouth(){
         return this.idSouth;
     }
 
     /**
      * @return l'identificatore del tile a est di quello che stiamo considerando
      */
-    public String getIdEast(){
+    public final String getIdEast(){
         return this.idEast;
     }
 
     /**
      * @return l'identificatore del tile a ovest di quello che stiamo considerando
      */
-    public String getIdWest(){
+    public final String getIdWest(){
         return this.idWest;
     }
 

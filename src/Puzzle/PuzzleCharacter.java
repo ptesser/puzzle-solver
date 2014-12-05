@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, modificare in implements
 
-    public class TileCharacter extends Tile{
+    class TileCharacter extends Tile{
 
         /* MEMBRI PRIVATI della classe TileCharacter */
         private char character;
@@ -33,7 +33,7 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
         /**
          * @return il carattere memorizzato nel tile
          */
-        public char getCharacter(){ return this.character; }
+        public final char getCharacter(){ return this.character; }
 
     }
 
@@ -48,7 +48,7 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
      * @param inputContent riceve un ArrayList di Stringhe proveniente dal file in input. Ogni elemento verrà splittato
      *                     e generato un oggetto TileCharacter contenente le info prelevate dala stringa.
      */
-    public PuzzleCharacter(ArrayList<String> inputContent){
+    public PuzzleCharacter (ArrayList<String> inputContent){
 
         int numCol = 0;
         int numRow = 0;
@@ -57,7 +57,7 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
             String[] splitInputContent = s.split("\\t");
 
             String id = splitInputContent[0];
-            char c = (splitInputContent[1]).charAt(0); // .replace(" ","")
+            char c = (splitInputContent[1]).charAt(0);
             String idNorth = splitInputContent[2];
             String idSouth = splitInputContent[3];
             String idEast = splitInputContent[4];
@@ -78,19 +78,22 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
                 numRow += 1;
             }
         }
+
         // imposto i campi dati della classe Puzzle che viene estesa
         this.setNumCol(numCol);
         this.setNumRow(numRow);
 
         this.puzzleCharacterSolved = new Tile[numRow][numCol];
+
+
     }
 
     /**
      *
      * @return il membro che contiene il Puzzle non ordinato in una collection HashMap
      */
-    @Override
-    public HashMap<String, Tile> getPuzzleElementToSolve(){
+    // @Override
+    public final HashMap<String, Tile> getPuzzleElementToSolve(){
         return this.puzzleCharacterToSolve;
     }
 
@@ -98,17 +101,27 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
      *
      * @return il membro che contiene il Puzzle risolto in un array bidimensionale
      */
-    @Override
-    public Tile[][] getPuzzleElementSolved(){
-        return this.puzzleCharacterSolved;
+    // @Override
+    public final Tile[][] getPuzzleElementSolved(){
+        return this.puzzleCharacterSolved.clone();
     }
 
+    /**
+     *
+     * @param r indica la riga su cui si andrà ad assegnare il nuovo oggetto
+     * @param c indica la colonna su cui si andrà ad assegnare il nuovo oggetto
+     * @param t indica l'oggetto che deve essere assegnato in poszione (r,c)
+     */
+    // @Override
+    public final void setPuzzleElementSolved(int r, int c, Tile t){
+        this.puzzleCharacterSolved[r][c] = t;
+    }
 
     /**
      * <p>Algoritmo di risoluzione del puzzle.</p>
      */
     @Override
-    public void solvePuzzle() {
+    public final void solvePuzzle() {
         this.getStrategy().executeSolve(this);
     }
 

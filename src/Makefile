@@ -4,7 +4,7 @@ JC = javac
 P = Puzzle
 S = Solver
 IO = FileInputOutput
-
+E = MyException
 # export JAVA_HOME=$(/usr/libexec/java_home)
 
 progetto :

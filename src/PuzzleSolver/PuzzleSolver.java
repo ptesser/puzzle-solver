@@ -29,6 +29,7 @@ public class PuzzleSolver {
         /* leggo il contenuto del file in input e lo trasformo nel formato dati che mi serve */
         ArrayList<String> inputContent = FileIOMod1.readContent(inputPath);
 
+
         /* creo un nuovo puzzle da risolvere, generato dall'input acquisito in precedenza */
         Puzzle puzzle1 = new PuzzleCharacter(inputContent);
         /* setto l'algoritmo che voglio usare per risolvere il puzzle */

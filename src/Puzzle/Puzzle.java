@@ -1,24 +1,26 @@
 package Puzzle;
 
-// import java.util.ArrayList;
 import Solver.SolverStrategy;
-
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 /**
  * @author Tesser Paolo
- * @version 0.1
+ *
  */
-public abstract class Puzzle { // scegliere se farla come interfaccia
+public abstract class Puzzle {
+
     /* MEMBRI PRIVATI della classe Puzzle */
     private int numCol;
     private int numRow;
     private SolverStrategy strategy;
 
     /* METODI PUBBLICI ASTRATTI della classe Puzzle */
+    /*
     public abstract HashMap<String, Tile> getPuzzleElementToSolve();
     public abstract Tile[][] getPuzzleElementSolved();
+    public abstract void setPuzzleElementSolved(int r, int c, Tile t);
+    */
     public abstract void solvePuzzle();
     public abstract void showPuzzleTerminal();
     public abstract ArrayList<String> convertToArrayList(); // forse meglio non metterlo in Puzzle perchè dipende da PuzzleCharacter se voglio una stringa
@@ -26,10 +28,11 @@ public abstract class Puzzle { // scegliere se farla come interfaccia
     /* METODI PUBBLICI CONCRETI della classe Puzzle */
 
     /**
-     *
-     * @param s
+     * visibilità: public perchè necessita di essere chiamato dal client che vuole risolvere il puzzle
+     * final : perché non vogliamo che, estendendo la classe Puzzle, qualcuno modifichi il metodo in modo tale che possa impostare un algoritmo diverso da quello che sceglie il client
+     * @param s oggetto che sarà di un tipo sottoclasse rispetto a SolverStrategy che implementare un determinato algoritmo di risoluzine del puzzle
      */
-    public void setStrategy(SolverStrategy s){
+    public final void setStrategy(SolverStrategy s){
         this.strategy = s;
     }
 
@@ -37,23 +40,27 @@ public abstract class Puzzle { // scegliere se farla come interfaccia
      *
      * @return
      */
-    public SolverStrategy getStrategy(){
+    public final SolverStrategy getStrategy(){
         return this.strategy;
     }
 
     /**
-     *
+     * visibilità : pack perché non vogliamo che altri al di fuori delle classi di puzzle, possano modificare il numero di colonne del puzzle questo compito è riservato solo al costruttore
+     * final : perché non vogliamo che, estendendo la classe Puzzle, qualcuno modifichi il metodo in modo tale che possa impostare un numero di colonne
+     *         non conforme alla realtà
      * @param numCol il numero di colonne del Puzzle da settare
      */
-    void setNumCol(int numCol) {
+    final void setNumCol(int numCol) {
         this.numCol = numCol;
     }
 
     /**
-     *
+     * visibilità : pack perché non vogliamo che altri al di fuori delle classi di puzzle, possano modificare il numero di righe del puzzle, questo compito è riservato solo al costruttore
+     * final : perché non vogliamo che, estendendo la classe Puzzle, qualcuno modifichi il metodo in modo tale che possa impostare un numero di colonne
+     *         non conforme alla realtà
      * @param numRow il numero di righe del Puzzle da settare
      */
-    void setNumRow(int numRow) {
+    final void setNumRow(int numRow) {
         this.numRow = numRow;
     }
 
@@ -61,7 +68,7 @@ public abstract class Puzzle { // scegliere se farla come interfaccia
      *
      * @return il numero di colonne del Puzzle
      */
-    public int getNumCol(){
+    public final int getNumCol(){
         return this.numCol;
     }
 
@@ -69,7 +76,7 @@ public abstract class Puzzle { // scegliere se farla come interfaccia
      *
      * @return il numero di righe del Puzzle
      */
-    public int getNumRow(){
+    public final int getNumRow(){
         return this.numRow;
     }
 }

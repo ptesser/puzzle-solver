@@ -2,7 +2,6 @@ package Solver;
 
 import Puzzle.PuzzleCharacter;
 import Puzzle.Tile;
-
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -28,7 +27,7 @@ public class SolverAlgStrategy implements SolverStrategy {
 
             if (idNorth.equals("VUOTO") && idWest.equals("VUOTO")){
                 findFirstTile = true;
-                p.getPuzzleElementSolved()[0][0] = currTile;
+                p.setPuzzleElementSolved(0,0,currTile);
             }
 
         }
@@ -42,15 +41,16 @@ public class SolverAlgStrategy implements SolverStrategy {
             Tile nowTile = p.getPuzzleElementSolved()[j][0];
             String idTileSud = nowTile.getIdSouth();
             Tile newTileSud = p.getPuzzleElementToSolve().get(idTileSud);
-            p.getPuzzleElementSolved()[j+1][0] = newTileSud;
+            p.setPuzzleElementSolved(j+1,0,newTileSud);
         }
 
+        // riordino tutte le righe a partire dal primo elemento della colonna più a sinistra di ciascuna
         for (int j = 0; j < (lengthRow); j++){
             for (int z = 0; z < (lengthCol-1); z++){
                 Tile nowTile = p.getPuzzleElementSolved()[j][z];
                 String idTileEast = nowTile.getIdEast();
                 Tile newTileEast = p.getPuzzleElementToSolve().get(idTileEast);
-                p.getPuzzleElementSolved()[j][z+1] = newTileEast;
+                p.setPuzzleElementSolved(j,z+1,newTileEast);
             }
         }
         System.out.println("Risoluzione completata.");
