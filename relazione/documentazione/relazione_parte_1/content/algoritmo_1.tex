@@ -13,6 +13,21 @@
 %
 
 \section{Algoritmo di risoluzione}
-Ecco
+L'algoritmo scelto per risolvere il puzzle è sequenziale, come richiesto dalla specifica di progetto. \\
+Per arrivare alla soluzione vengono utilizzati due strutture dati come membri della classe PuzzleCharacter. \\
+La prima struttura è la collezione HashMap, nella quale salverò in ordine casuale i tasselli ricevuti in input dal file di testo. Memorizzerò dunque l'id del tassello come chiave mentre come valore salverò l'intero pezzo (Tile). \\
+La seconda struttura dati è un array bidimensionale di oggetti Tile. TO DO\\
+Di seguito vengono esposte le seguenze che vengo eseguite, correlate da dei grafici che mostrano come esso agisca sulle strutture dati utilizzate.
+
+	\begin{enumerate}
+		\item \textbf{Ricerco il primo elemento del puzzle (quello in alto a sinistra).} \\
+Scorro quindi una sola volta la tavola hash per cercare il tassello che ha id nord e id ovest uguale alla stringa VUOTO. \\
+Una volta trovato salvo il pezzo trovato nella prima posizione dell'array bidimensionale.
+
+		\item \textbf{Ordino la colonna più a sinistra (quella con i tasselli aventi id ovest uguale alla stringa VUOTO).} \\
+TO DO
+		\item \textbf{Ordino tutte le righe.} \\
+TO DO
+	\end{enumerate}
 
 
