@@ -9,18 +9,24 @@
 % ====================================================================
 % 0.0.1	2014-12-04	Tesser-Paolo		inserita sezione 
 % ====================================================================
-% 
+% 0.0.2	2014-12-06	Tesser Paolo		inizio stesura capitolo e sottocapitoli
 %
 
 \section{Principi di Programmazione ad Oggetti}
 In questa capitolo vengono descritte le scelte effettuate per implementare i principi della programmazione ad oggeti, in particolare quelli di incapsulamento e di information hiding. \\
 
 	\subsection{Principio di modularità}
-TO DO
+E' stato deciso di dividere la struttura dell'applicativo in diversi package. \\
+Questo permette una migliore manutenzione del codice in quanto in ogni package sono contenute delle classi logicamente correlate e niente altro che possa essere di interferenza con il loro funzionamento. \\
+Si è deciso di rendere inoltre il codice il più possibile estendibile e ciò è stato realizzato tramite l'utilizzo di interfacce e di classi astratte. \\
+Maggiori dettagli su come è stato realizzato il tutto sono illustrati nel capitolo precedente, dedicato apposta alle scelte architetturali.
 
 	\subsection{Principio di incapsulamento}
+Per avere un buon incapsulamento si è cercato di rendere le classi il più isolate possibili, permettendone l'accesso ai suoi membri solo attraverso degli opportuni metodi getter/setter e rendendo tali membri privati. \\
+Questi marcatori di accesso inoltre sono quasi tutti firmati \textbf{final} per non consentire delle future ridefinizioni da sottoclassi che ne possano compromettere il naturale comportamento. \\
 TO DO
-
 	\subsection{Principio di information hiding}
 TO DO
 
+	\subsection{Principio di sostituizione}
+Per garantire che l'utente possa scrivere codice basato sulla specifica TO DO
