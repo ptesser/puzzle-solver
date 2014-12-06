@@ -1,6 +1,6 @@
 package Solver;
 
-import Puzzle.PuzzleCharacter;
+import Puzzle.*;
 import Puzzle.Tile;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,46 +13,55 @@ import java.util.Set;
 public class SolverAlgStrategy implements SolverStrategy {
 
     @Override
-    public void executeSolve(PuzzleCharacter p) {
-        // ricerco il primo elemento del puzzle (alto a sinistra, nord: VUOTO, ovest: VUOTO)
-        Set set = p.getPuzzleElementToSolve().entrySet();
-        Iterator i = set.iterator();
-        boolean findFirstTile = false;
+    public void executeSolve(Puzzle o) {
 
-        while (i.hasNext() && !findFirstTile){
-            Map.Entry currIter = (Map.Entry) i.next();
-            Tile currTile = (Tile) currIter.getValue();
-            String idNorth = currTile.getIdNorth();
-            String idWest = currTile.getIdWest();
+        if (o instanceof PuzzleCharacter){
 
-            if (idNorth.equals("VUOTO") && idWest.equals("VUOTO")){
-                findFirstTile = true;
-                p.setPuzzleElementSolved(0,0,currTile);
+            PuzzleCharacter p = (PuzzleCharacter) o;
+
+            // ricerco il primo elemento del puzzle (alto a sinistra, nord: VUOTO, ovest: VUOTO)
+            Set set = p.getPuzzleElementToSolve().entrySet();
+            Iterator i = set.iterator();
+            boolean findFirstTile = false;
+
+            while (i.hasNext() && !findFirstTile){
+                Map.Entry currIter = (Map.Entry) i.next();
+                Tile currTile = (Tile) currIter.getValue();
+                String idNorth = currTile.getIdNorth();
+                String idWest = currTile.getIdWest();
+
+                if (idNorth.equals("VUOTO") && idWest.equals("VUOTO")){
+                    findFirstTile = true;
+                    p.setPuzzleElementSolved(0,0,currTile);
+                }
+
             }
 
-        }
+            // le dichiaro fuori dal for così evito di fare ogni volta una chiamata di funzione
+            int lengthRow = p.getNumRow();
+            int lengthCol = p.getNumCol();
 
-        // le dichiaro fuori dal for così evito di fare ogni volta una chiamata di funzione
-        int lengthRow = p.getNumRow();
-        int lengthCol = p.getNumCol();
-
-        // riordino la colonna più a sinistra
-        for (int j = 0; j < (lengthRow - 1); j++){
-            Tile nowTile = p.getPuzzleElementSolved()[j][0];
-            String idTileSud = nowTile.getIdSouth();
-            Tile newTileSud = p.getPuzzleElementToSolve().get(idTileSud);
-            p.setPuzzleElementSolved(j+1,0,newTileSud);
-        }
-
-        // riordino tutte le righe a partire dal primo elemento della colonna più a sinistra di ciascuna
-        for (int j = 0; j < (lengthRow); j++){
-            for (int z = 0; z < (lengthCol-1); z++){
-                Tile nowTile = p.getPuzzleElementSolved()[j][z];
-                String idTileEast = nowTile.getIdEast();
-                Tile newTileEast = p.getPuzzleElementToSolve().get(idTileEast);
-                p.setPuzzleElementSolved(j,z+1,newTileEast);
+            // riordino la colonna più a sinistra
+            for (int j = 0; j < (lengthRow - 1); j++){
+                Tile nowTile = p.getPuzzleElementSolved()[j][0];
+                String idTileSud = nowTile.getIdSouth();
+                Tile newTileSud = p.getPuzzleElementToSolve().get(idTileSud);
+                p.setPuzzleElementSolved(j+1,0,newTileSud);
             }
+
+            // riordino tutte le righe a partire dal primo elemento della colonna più a sinistra di ciascuna
+            for (int j = 0; j < (lengthRow); j++){
+                for (int z = 0; z < (lengthCol-1); z++){
+                    Tile nowTile = p.getPuzzleElementSolved()[j][z];
+                    String idTileEast = nowTile.getIdEast();
+                    Tile newTileEast = p.getPuzzleElementToSolve().get(idTileEast);
+                    p.setPuzzleElementSolved(j,z+1,newTileEast);
+                }
+            }
+            System.out.println("Risoluzione completata.");
         }
-        System.out.println("Risoluzione completata.");
-    }
+
+
+        }
+
 }

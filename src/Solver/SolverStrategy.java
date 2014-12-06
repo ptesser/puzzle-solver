@@ -1,6 +1,6 @@
 package Solver;
 
-import Puzzle.PuzzleCharacter;
+import Puzzle.*;
 
 /**
  * @author Tesser Paolo
@@ -8,6 +8,6 @@ import Puzzle.PuzzleCharacter;
  */
 public interface SolverStrategy {
 
-    public void executeSolve(PuzzleCharacter p);
+    public void executeSolve(Puzzle o);
 
 }

@@ -25,7 +25,9 @@ public class PuzzleSolver {
         Path outputPath = Paths.get(outputFile);
 
         /* leggo il contenuto del file in input e lo trasformo nel formato dati che mi serve */
-        ArrayList<String> inputContent = FileIOMod1.readContent(inputPath);
+        FileIO file = new FileIOMod1();
+        ArrayList<String> inputContent = file.readContent(inputPath);
+
 
         /* creo un nuovo puzzle da risolvere, generato dall'input acquisito in precedenza */
         Puzzle puzzle1 = new PuzzleCharacter(inputContent);
@@ -36,7 +38,11 @@ public class PuzzleSolver {
 
         /* prelevo l'output risolto nel formato che mi serve per la stampa e stampo */
         ArrayList<String> outputContent = puzzle1.convertToArrayList();
-        FileIOMod1.writeContent(outputPath, outputContent, puzzle1.getNumRow(), puzzle1.getNumCol());
+        if (file instanceof FileIOMod1) {
+            ((FileIOMod1)file).writeContent(outputPath, outputContent, puzzle1.getNumRow(), puzzle1.getNumCol());
+        }else{
+            System.out.println("Impossibile scrivere il puzzle su file.");
+        }
 
     }
 }
