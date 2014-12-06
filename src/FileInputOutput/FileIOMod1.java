@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @version 0.1
  */
 
-public class FileIOMod1 {
+public class FileIOMod1 implements FileIO{
 
     public static Charset charset = StandardCharsets.UTF_8;
 
@@ -26,7 +26,8 @@ public class FileIOMod1 {
      * @param inputPath percorso del file in input da leggere
      * @return un ArrayList contenente un elemento per ogni riga del file passato
      */
-    public static ArrayList<String> readContent(Path inputPath) {
+    @Override
+    public ArrayList<String> readContent(Path inputPath) {
         ArrayList<String> content = new ArrayList<>(0);
 
         try (BufferedReader reader = Files.newBufferedReader(inputPath, charset)) {
@@ -45,7 +46,14 @@ public class FileIOMod1 {
         return content;
     }
 
-    public static void writeContent(Path outputFile, ArrayList<String> content,int numRow, int numCol){
+    /**
+     *
+     * @param outputFile il percorso dove andrà scritto e salvato il risulato passato
+     * @param content il contenuto che deve essere stampato
+     * @param numRow il numero di righe del puzzle
+     * @param numCol il numero di colonne del puzzle
+     */
+    public void writeContent(Path outputFile, ArrayList<String> content,int numRow, int numCol){
         try (BufferedWriter writer = Files.newBufferedWriter(outputFile, charset)) {
             for (String s : content){ // testo del puzzle riordinato in una sola riga
                 writer.write(s);
