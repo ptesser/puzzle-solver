@@ -12,7 +12,7 @@
 % 0.0.2	2014-12-06	Tesser Paolo		inizio stesura capitolo e sottocapitoli
 %
 
-\section{Principi di Programmazione ad Oggetti}
+\section{Principi di OOP}
 In questa capitolo vengono descritte le scelte effettuate per implementare i principi della programmazione ad oggeti, in particolare quelli di incapsulamento e di information hiding. \\
 
 	\subsection{Principio di modularità}
@@ -24,9 +24,9 @@ Maggiori dettagli su come è stato realizzato il tutto sono illustrati nel capit
 	\subsection{Principio di incapsulamento}
 Per avere un buon incapsulamento si è cercato di rendere le classi il più isolate possibili, permettendone l'accesso ai suoi membri solo attraverso degli opportuni metodi getter/setter e rendendo tali membri privati. \\
 Questi marcatori di accesso inoltre sono quasi tutti firmati \textbf{final} per non consentire delle future ridefinizioni da sottoclassi che ne possano compromettere il naturale comportamento. \\
-TO DO
+
 	\subsection{Principio di information hiding}
 TO DO
 
 	\subsection{Principio di sostituizione}
-Per garantire che l'utente possa scrivere codice basato sulla specifica TO DO
+Date le classi e le interfacce presenti illustrate precedentemente abbiamo che TileCharacter è sottotipo di Tile e PuzzleCharacter è sottotipo di Puzzle. Questo principio ha permesso, in particolare nel client \textbf{PuzzleSolver}, di scrivere codice basato sulla specifica delle superclassi e solo in pochi casi effettuare dei downcast, sempre testati preventivamente tramite l'operatore instanceof.
