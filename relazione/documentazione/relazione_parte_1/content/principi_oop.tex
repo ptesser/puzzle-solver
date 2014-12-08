@@ -21,12 +21,13 @@ Questo permette una migliore manutenzione del codice in quanto in ogni package s
 Si è deciso di rendere inoltre il codice il più possibile estendibile e ciò è stato realizzato tramite l'utilizzo di interfacce e di classi astratte. \\
 Maggiori dettagli su come è stato realizzato il tutto sono illustrati nel capitolo precedente, dedicato apposta alle scelte architetturali.
 
-	\subsection{Principio di incapsulamento}
-Per avere un buon incapsulamento si è cercato di rendere le classi il più isolate possibili, permettendone l'accesso ai suoi membri solo attraverso degli opportuni metodi getter/setter e rendendo tali membri privati. \\
-Questi marcatori di accesso inoltre sono quasi tutti firmati \textbf{final} per non consentire delle future ridefinizioni da sottoclassi che ne possano compromettere il naturale comportamento. \\
-
 	\subsection{Principio di information hiding}
-TO DO
+Si è cercato di realizzare questo principio esponendo il meno possibile i dati. Sono stati dichiarati quindi 'privati' tutti i membri delle diverse classi e associati dei metodi getter/setter (non per tutti i campi è stato dichiarato il metodo setter, ma solo su alcuni che ne richiedevano l'accesso in scrittura al di fuori della classe stessa).  \\
+\textbf{TO DO}
+	\subsection{Principio di incapsulamento}
+Per avere un buon incapsulamento si è mantenuto all'interno della classe lo stato dell'oggetto e il suo comportamento.
+I metodi setter/getter citati precedentemente sono inoltre tutti firmati \textbf{final} per non consentire delle future ridefinizioni da sottoclassi che ne possano compromettere il naturale funzionamento. \\
+\textbf{TO DO}
 
 	\subsection{Principio di sostituizione}
-Date le classi e le interfacce presenti illustrate precedentemente abbiamo che TileCharacter è sottotipo di Tile e PuzzleCharacter è sottotipo di Puzzle. Questo principio ha permesso, in particolare nel client \textbf{PuzzleSolver}, di scrivere codice basato sulla specifica delle superclassi e solo in pochi casi effettuare dei downcast, sempre testati preventivamente tramite l'operatore instanceof.
+Date le classi e le interfacce presenti illustrate precedentemente abbiamo che TileCharacter è sottotipo di Tile e PuzzleCharacter è sottotipo di Puzzle. Questa struttura ha permesso, in particolare nel client \textbf{PuzzleSolver}, di scrivere codice basato sulla specifica dei supertipi e solo in pochi casi effettuare dei downcast, sempre testati preventivamente tramite l'operatore instanceof, per invocare dei metodi non presenti nelle classi base.
