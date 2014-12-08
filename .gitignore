@@ -16,3 +16,6 @@ progr_concorrente_distribuita.iml
 *.lot
 *.lof
 
+# Astah temp file
+*.asta.bak
+*.asta.lock
