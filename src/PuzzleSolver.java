@@ -16,11 +16,11 @@ public class PuzzleSolver {
 
     public static void main( String[] args ){
         /* acquisisco i percorsi dei file di input e output che mi servono sotto forma di stringhe */
-        String inputFile = "/Users/ptesser/Documents/repository/Bitbucket/progr_concorrente_distribuita/input_files/test2.txt";
-        String outputFile = "/Users/ptesser/Documents/repository/Bitbucket/progr_concorrente_distribuita/output_files/empty.txt";
-        // String inputFile = args[0];
-        // String outputFile = args[1];
-        // Path dei file di prova: /Users/ptesser/Documents/repository/Bitbucket/progr_concorrente_distribuita/input_files/test1.txt
+        // String inputFile = "/Users/ptesser/Documents/repository/Bitbucket/progr_concorrente_distribuita/input_files/file_esempio.txt";
+        // String outputFile = "/Users/ptesser/Documents/repository/Bitbucket/progr_concorrente_distribuita/output_files/empty.txt";
+        String inputFile = args[0];
+        String outputFile = args[1];
+        // Path dei file di prova: /Users/ptesser/Documents/repository/Bitbucket/progr_concorrente_distribuita/input_files/.txt
 
         /* trasformo le stringhe in input dei percorsi del file in oggetti Path */
         Path inputPath = Paths.get(inputFile);

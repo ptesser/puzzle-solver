@@ -1,9 +1,10 @@
-CIAO COME STAI?
+Questo e un puzzle di esempio.
 
-CIA
-O C
-OME
- ST
-AI?
+Quest
+o e u
+n puz
+zle d
+i ese
+mpio.
 
-5 3
+6 5

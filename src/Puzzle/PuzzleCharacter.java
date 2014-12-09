@@ -80,14 +80,14 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
             String idNorth = splitInputContent[2];
 
             if (Pattern.matches("\\s*",splitInputContent[3]) || splitInputContent[3].isEmpty()){
-                throw new IdEmptyExcpt("Id South");
-            }
-            String idSouth = splitInputContent[3];
-
-            if (Pattern.matches("\\s*",splitInputContent[4]) || splitInputContent[4].isEmpty()){
                 throw new IdEmptyExcpt("Id East");
             }
-            String idEast = splitInputContent[4];
+            String idEast = splitInputContent[3];
+
+            if (Pattern.matches("\\s*",splitInputContent[4]) || splitInputContent[4].isEmpty()){
+                throw new IdEmptyExcpt("Id South");
+            }
+            String idSouth = splitInputContent[4];
 
             if (Pattern.matches("\\s*",splitInputContent[5]) || splitInputContent[5].isEmpty()){
                 throw new IdEmptyExcpt("Id West");
