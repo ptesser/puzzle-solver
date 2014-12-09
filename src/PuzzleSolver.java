@@ -1,4 +1,6 @@
 import FileInputOutput.*;
+import MyException.IdEmptyExcpt;
+import MyException.NumFieldRowExcpt;
 import Puzzle.*;
 import Solver.*;
 import java.nio.file.Path;
@@ -28,20 +30,30 @@ public class PuzzleSolver {
         FileIO file = new FileIOMod1();
         ArrayList<String> inputContent = file.readContent(inputPath);
 
-
+        try {
         /* creo un nuovo puzzle da risolvere, generato dall'input acquisito in precedenza */
-        Puzzle puzzle1 = new PuzzleCharacter(inputContent);
+            Puzzle puzzle1 = new PuzzleCharacter(inputContent);
         /* setto l'algoritmo che voglio usare per risolvere il puzzle */
-        puzzle1.setStrategy(new SolverAlgStrategy());
+            puzzle1.setStrategy(new SolverAlgStrategy());
         /* risolvo il puzzle */
-        puzzle1.solvePuzzle();
+            puzzle1.solvePuzzle();
 
         /* prelevo l'output risolto nel formato che mi serve per la stampa e stampo */
-        ArrayList<String> outputContent = puzzle1.convertToArrayList();
-        if (file instanceof FileIOMod1) {
-            ((FileIOMod1)file).writeContent(outputPath, outputContent, puzzle1.getNumRow(), puzzle1.getNumCol());
-        }else{
-            System.out.println("Impossibile scrivere il puzzle su file.");
+            ArrayList<String> outputContent = puzzle1.convertToArrayList();
+            if (file instanceof FileIOMod1) {
+                ((FileIOMod1) file).writeContent(outputPath, outputContent, puzzle1.getNumRow(), puzzle1.getNumCol());
+            } else {
+                System.out.println("Impossibile scrivere il puzzle su file.");
+            }
+        }
+        catch (NumFieldRowExcpt e){
+            System.out.println(e.getError());
+            System.out.println(e.getEffect());
+        }
+        catch (IdEmptyExcpt e){
+            System.out.println(e.getError());
+            System.out.println(e.getEffect());
+
         }
 
     }

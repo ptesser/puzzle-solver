@@ -1,5 +1,8 @@
 package Puzzle;
 
+import MyException.IdEmptyExcpt;
+import MyException.NumFieldRowExcpt;
+
 import java.util.*;
 
 /**
@@ -48,7 +51,7 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
      * @param inputContent riceve un ArrayList di Stringhe proveniente dal file in input. Ogni elemento verrà splittato
      *                     e generato un oggetto TileCharacter contenente le info prelevate dala stringa.
      */
-    public PuzzleCharacter (ArrayList<String> inputContent){
+    public PuzzleCharacter (ArrayList<String> inputContent) throws NumFieldRowExcpt, IdEmptyExcpt{
 
         int numCol = 0;
         int numRow = 0;
@@ -56,16 +59,40 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
         for (String s : inputContent){
             String[] splitInputContent = s.split("\\t");
 
+            if (splitInputContent.length < 6){
+                throw new NumFieldRowExcpt();
+            }
+
+            if (splitInputContent[0].equals(" ") || splitInputContent[0].isEmpty()){
+                throw new IdEmptyExcpt("Id del tassello della riga corrente");
+            }
             String id = splitInputContent[0];
             if (splitInputContent[1].length() > 1){
-                System.out.println("Attenzione! Una una riga del file in input presenta più valori per il campo riservato al carattere. Verrà considerato solo il primo trovato.");
+                System.out.println("WARNING! Una una riga del file in input presenta più valori per il campo riservato al carattere. Verrà considerato solo il primo trovato.");
             }
             char c = (splitInputContent[1]).charAt(0);
+
+            if (splitInputContent[2].equals(" ") || splitInputContent[2].isEmpty()){
+                throw new IdEmptyExcpt("Id North");
+            }
             String idNorth = splitInputContent[2];
+
+            if (splitInputContent[3].equals(" ") || splitInputContent[3].isEmpty()){
+                throw new IdEmptyExcpt("Id South");
+            }
             String idSouth = splitInputContent[3];
+
+            if (splitInputContent[4].equals(" ") || splitInputContent[4].isEmpty()){
+                throw new IdEmptyExcpt("Id East");
+            }
             String idEast = splitInputContent[4];
+
+            if (splitInputContent[4].equals(" ") || splitInputContent[5].isEmpty()){
+                throw new IdEmptyExcpt("Id West");
+            }
             String idWest = splitInputContent[5];
 
+            /* se l'input della riga è corretto salvo la riga nel Tile divisa secondo le necessitaà */
             Tile tileCurrent = new PuzzleCharacter.TileCharacter(id, idNorth,idSouth, idEast, idWest, c);
             this.puzzleCharacterToSolve.put(id, tileCurrent);
 
@@ -87,7 +114,6 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
         this.setNumRow(numRow);
 
         this.puzzleCharacterSolved = new Tile[numRow][numCol];
-
 
     }
 
