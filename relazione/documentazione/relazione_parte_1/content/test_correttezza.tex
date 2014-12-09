@@ -9,10 +9,26 @@
 % ====================================================================
 % 0.0.1	2014-12-05	Tesser-Paolo		inserita sezione 
 % ====================================================================
-% 
+% 0.0.2	2014-12-09	Tesser Paolo		inizio stesura dei controlli effettuati
+%
 %
 
-\section{Test di correttezza}
-TO DO
+\section{Controlli di correttezza}
+Partendo dalla pre condizione che il file che verrà usato per testare il funzionamento del programma sarà corretto, come specificato in classe dal proponente, si sono effettuati alcuni controlli per garantire che l'input sia conforme a certi requisiti di seguito elencati.
 
+	\subsection{Controlli non bloccanti}
+Questi controlli servono per avvertire l'utilizzatore del programma che l'input specificato, pur non essendo conforme alle aspettative, è in grado di fare eseguire l'algoritmo di risoluzione e generare un qualche output che rispetti le richieste della specifica.
+		\begin{enumerate}
+			\item \textbf{Campo carattere non singolo} : se lo spazio riservato al carattere nella riga in input, contiene più di un carattere, viene preso in considerazione solo il primo trovato e ignorati i successivi, notificando l'accaduto sul terminale e proseguendo con l'esecuzione.
+		\end{enumerate}
+		
+	\subsection{Controlli bloccanti}
+Questi controlli servono per bloccare l'esecuzione del programma qualora il file non sia conforme a certi requisiti. Questo perché un input scorretto pregiudicherebbe l'esecuzione di alcuni metodi della classe \textbf{Puzzle} generando dell'eccezioni non controllate. \\
+Si è pensato quindi di creare delle eccezioni controllate che stampassero il messaggio d'errore personalizzato e bloccassero il flusso del main, saltando di fatto la chiamata al metodo di risoluzione del puzzle. \\
 
+		\begin{enumerate}
+			\item \textbf{Presenza di 6 campi in ogni riga} : questo controllo serve per bloccare i file che contengono delle righe non aventi il numero esatto di campi richiesti. \\
+Quelli necessari sono 6: id, carattere, id nord, id est, id sud, id ovest e non ne può mancare nessuno di questi se si vuole risolvere il puzzle.
+			\item \textbf{Campi id non vuoti o formati da soli spazi} : questo controllo è stato previsto per bloccare i file che contengono id vuoti o formati solo da spazi in quanto poco conformi alle aspettative relative a un identificatore. \\
+
+		\end{enumerate}
