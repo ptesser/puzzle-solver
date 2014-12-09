@@ -4,6 +4,7 @@ import MyException.IdEmptyExcpt;
 import MyException.NumFieldRowExcpt;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * @author Tesser Paolo
@@ -63,7 +64,8 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
                 throw new NumFieldRowExcpt();
             }
 
-            if (splitInputContent[0].equals(" ") || splitInputContent[0].isEmpty()){
+
+            if (Pattern.matches("\\s*",splitInputContent[0]) || splitInputContent[0].isEmpty()){
                 throw new IdEmptyExcpt("Id del tassello della riga corrente");
             }
             String id = splitInputContent[0];
@@ -72,22 +74,22 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
             }
             char c = (splitInputContent[1]).charAt(0);
 
-            if (splitInputContent[2].equals(" ") || splitInputContent[2].isEmpty()){
+            if (Pattern.matches("\\s*",splitInputContent[2]) || splitInputContent[2].isEmpty()){
                 throw new IdEmptyExcpt("Id North");
             }
             String idNorth = splitInputContent[2];
 
-            if (splitInputContent[3].equals(" ") || splitInputContent[3].isEmpty()){
+            if (Pattern.matches("\\s*",splitInputContent[3]) || splitInputContent[3].isEmpty()){
                 throw new IdEmptyExcpt("Id South");
             }
             String idSouth = splitInputContent[3];
 
-            if (splitInputContent[4].equals(" ") || splitInputContent[4].isEmpty()){
+            if (Pattern.matches("\\s*",splitInputContent[4]) || splitInputContent[4].isEmpty()){
                 throw new IdEmptyExcpt("Id East");
             }
             String idEast = splitInputContent[4];
 
-            if (splitInputContent[4].equals(" ") || splitInputContent[5].isEmpty()){
+            if (Pattern.matches("\\s*",splitInputContent[5]) || splitInputContent[5].isEmpty()){
                 throw new IdEmptyExcpt("Id West");
             }
             String idWest = splitInputContent[5];

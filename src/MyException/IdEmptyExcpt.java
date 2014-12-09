@@ -15,7 +15,7 @@ public class IdEmptyExcpt extends Exception{
      */
     public IdEmptyExcpt(String t){
         this.typeId = t;
-        this.error = "ERROR! Id: " + this.typeId + " vuoto o formato da una stringa di soli spazi!";
+        this.error = "ERROR! " + this.typeId + " vuoto o formato da una stringa di soli spazi!";
         this.effect = "Il programma terminerà senza risolvere il puzzle!";
     }
 
