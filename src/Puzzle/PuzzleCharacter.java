@@ -57,6 +57,9 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
             String[] splitInputContent = s.split("\\t");
 
             String id = splitInputContent[0];
+            if (splitInputContent[1].length() > 1){
+                System.out.println("Attenzione! Una una riga del file in input presenta più valori per il campo riservato al carattere. Verrà considerato solo il primo trovato.");
+            }
             char c = (splitInputContent[1]).charAt(0);
             String idNorth = splitInputContent[2];
             String idSouth = splitInputContent[3];
