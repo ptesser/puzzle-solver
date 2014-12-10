@@ -1,8 +1,8 @@
-import FileInputOutput.*;
-import MyException.IdEmptyExcpt;
-import MyException.NumFieldRowExcpt;
-import Puzzle.*;
-import Solver.*;
+import fileinputoutput.*;
+import myexception.IdEmptyExcpt;
+import myexception.NumFieldRowExcpt;
+import puzzle.*;
+import solver.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;

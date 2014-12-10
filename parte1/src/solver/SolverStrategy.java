@@ -1,6 +1,6 @@
-package Solver;
+package solver;
 
-import Puzzle.*;
+import puzzle.*;
 
 /**
  * @author Tesser Paolo

@@ -1,4 +1,4 @@
-package MyException;
+package myexception;
 
 /**
  * @author Tesser Paolo
