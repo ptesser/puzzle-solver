@@ -1,7 +1,7 @@
-package Solver;
+package solver;
 
-import Puzzle.*;
-import Puzzle.Tile;
+import puzzle.*;
+import puzzle.Tile;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;

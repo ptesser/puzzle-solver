@@ -1,7 +1,7 @@
-package Puzzle;
+package puzzle;
 
-import MyException.IdEmptyExcpt;
-import MyException.NumFieldRowExcpt;
+import myexception.IdEmptyExcpt;
+import myexception.NumFieldRowExcpt;
 
 import java.util.*;
 import java.util.regex.Pattern;

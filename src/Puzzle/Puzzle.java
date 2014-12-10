@@ -1,6 +1,6 @@
-package Puzzle;
+package puzzle;
 
-import Solver.SolverStrategy;
+import solver.SolverStrategy;
 import java.util.ArrayList;
 
 
