@@ -1,21 +1,19 @@
-package MyException;
+package myexception;
 
 /**
  * @author Tesser Paolo
- *
+ * @version 0.1
  */
-public class IdEmptyExcpt extends Exception{
+public class NumFieldRowExcpt extends Exception{
     private String error;
     private String effect;
-    private String typeId;
 
     /**
      * Costruttore dell'eccezione
      *
      */
-    public IdEmptyExcpt(String t){
-        this.typeId = t;
-        this.error = "ERROR! " + this.typeId + " vuoto o formato da una stringa di soli spazi!";
+    public NumFieldRowExcpt(){
+        this.error = "ERROR! Riga non conforme alla specifica!";
         this.effect = "Il programma terminerà senza risolvere il puzzle!";
     }
 
@@ -34,5 +32,4 @@ public class IdEmptyExcpt extends Exception{
     public String getEffect(){
         return this.effect;
     }
-
 }

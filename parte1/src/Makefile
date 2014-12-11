@@ -14,11 +14,3 @@ compile:
 	$(JC) *.java
 	@echo "Compilazione completata"
 
-# Pulizia dei file .class
-clean:
-	$(RM) *.class
-	$(RM) $(E)/*.class
-	$(RM) $(P)/*.class
-	$(RM) $(S)/*.class
-	$(RM) $(IO)/*.class
-	@echo "Pulizia completata"
