@@ -5,7 +5,6 @@
 # ignore folder .idea because doesn't depends from the project, but from the IDE that I use
 .idea
 out
-
 progr_concorrente_distribuita.iml
 
 # ignore file in output from LaTex compilation
@@ -17,3 +16,6 @@ progr_concorrente_distribuita.iml
 *.lot
 *.lof
 
+# Astah temp file
+*.asta.bak
+*.asta.lock

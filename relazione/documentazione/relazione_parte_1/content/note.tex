@@ -1,0 +1,26 @@
+% File: note.tex
+% Created: 2014-12-09
+% Author: Tesser Paolo
+% Email: p.tesser921@gmail.com
+% 
+%
+% Modification History
+% Version	Modifier Date	Author			Change
+% ====================================================================
+% 0.0.1	2014-12-09	Tesser-Paolo		inserita sezione e iniziata stesura
+% ====================================================================
+% 
+%
+
+\section{Note}
+	\subsection{Versione JVM}
+La versione di Java presente nella macchina utilizzata per l'implementazione del codice è quella 1.8.0\_20. \\
+Non sono stati usati però costrutti particolari di questa versione e per l'utilizzo di API si è sempre fatto riferimento alla documentazione ufficiale della 1.7. \\
+Per essere sicuri di rispettare la specifica che richiedeva al massimo la versione 1.7, si è testata la compilazione e l'esecuzione dell'applicativo sulle macchine di laboratorio dopo avere eseguito da terminale le istruzioni presenti al seguente link: \href{http://www.studenti.math.unipd.it/index.php?id=corsi#c620}{http://www.studenti.math.unipd.it} .
+
+	\subsection{Compilazione}
+Dalla root principale consegnata è possibile avviare il comando per la compilazione attraverso l'istruzione \textbf{make} o \textbf{make compile}. \\
+Se si vuole lanciare il programma, testandolo con degli input definiti dal fornitore per provare l'applicativo, è possibile eseguire sempre da root il comando \textbf{make load} il quale lancerà il programma prendendo due file fissi come input e output. \\
+Se si vuole invece lanciare il programma con dei file di test personalizzati è possibile eseguire il seguente script bash che compilirà automaticamente e lancerà l'applicativo: \\
+\textbf{bash PuzzleSolver.sh input output}, questo riceve i due file e lancia l'avvio del programma.
+

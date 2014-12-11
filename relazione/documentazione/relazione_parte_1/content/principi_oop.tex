@@ -1,0 +1,32 @@
+% File: principi_oop.tex
+% Created: 2014-12-04
+% Author: Tesser Paolo
+% Email: p.tesser921@gmail.com
+% 
+%
+% Modification History
+% Version	Modifier Date	Author			Change
+% ====================================================================
+% 0.0.1	2014-12-04	Tesser-Paolo		inserita sezione 
+% ====================================================================
+% 0.0.2	2014-12-06	Tesser Paolo		inizio stesura capitolo e sottocapitoli
+%
+
+\section{Principi di OOP}
+In questa capitolo vengono descritte le scelte effettuate per implementare i principi della programmazione ad oggeti, in particolare quelli di incapsulamento e di information hiding. \\
+
+	\subsection{Principio di modularità}
+E' stato deciso di dividere la struttura dell'applicativo in diversi package. \\
+Questo permette una migliore manutenzione del codice in quanto in ogni package sono contenute delle classi logicamente correlate e niente altro che possa essere di interferenza con il loro funzionamento. \\
+Si è deciso di rendere inoltre il codice il più possibile estendibile e ciò è stato realizzato tramite l'utilizzo di interfacce e di classi astratte. \\
+Maggiori dettagli su come è stato realizzato il tutto sono illustrati nel capitolo precedente, dedicato apposta alle scelte architetturali.
+
+	\subsection{Principio di information hiding}
+Si è cercato di realizzare questo principio esponendo il meno possibile i dati. Sono stati dichiarati quindi privati tutti i membri delle diverse classi e associati dei metodi getter/setter (non per tutti i campi è stato dichiarato il metodo setter, ma solo su alcuni che ne richiedevano l'accesso in scrittura al di fuori della classe stessa).  \\
+
+	\subsection{Principio di incapsulamento}
+Per avere un buon incapsulamento si è mantenuto all'interno della classe lo stato dell'oggetto e il suo comportamento.
+I metodi setter/getter citati precedentemente sono inoltre tutti firmati \textbf{final} per non consentire delle future ridefinizioni da sottoclassi che ne possano compromettere il naturale funzionamento. \\
+
+	\subsection{Principio di sostituizione}
+Date le classi e le interfacce presenti illustrate precedentemente abbiamo che TileCharacter è sottotipo di Tile e PuzzleCharacter è sottotipo di Puzzle. Questa struttura ha permesso, in particolare nel client \textbf{PuzzleSolver}, di scrivere codice basato sulla specifica dei supertipi e solo in pochi casi effettuare dei downcast, sempre testati preventivamente tramite l'operatore instanceof, per invocare dei metodi non presenti nelle classi base.
