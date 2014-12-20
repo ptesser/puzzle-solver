@@ -1,0 +1,42 @@
+% File: relazione_parte_3.tex
+% Created: aaaa-mm-gg
+% Author: Tesser Paolo
+% Email: p.tesser921@gmail.com
+% 
+%
+% Modification History
+% Version	Modifier Date	Author			Change
+% ====================================================================
+% 0.0.1		aaaa-mm-gg		Tesser Paolo	creato il file e inclusi i vari input necessari alla compilazione del documento
+% ====================================================================
+%
+%
+
+\input{../template/doc_standard/packages.tex}
+\input{../template/doc_standard/commands.tex}
+\input{../template/doc_standard/styles.tex}
+
+\begin{document}
+
+	% Command to redifine
+	\renewcommand{\documentName}{Relazione Terza Parte del progetto PuzzleSolver}
+	\renewcommand{\documentListAuthor}{
+		\begin{itemize}[leftmargin=0cm]
+			\item[] Tesser Paolo
+		\end{itemize}
+	}
+	\renewcommand{\redactionDate}{aaaa-mm-gg}
+	\renewcommand{\documentScope}{Lo scopo del documento è quello di fornire una presentazione della terza parte del progetto PuzzleSolver da realizzare, descrivendo e motivando le scelte attuate in questa fase.}
+	\renewcommand{\documentVersion}{v.3.0.0}	
+
+
+	% First Page
+	\input{../template/doc_standard/firstpage.tex}
+
+	% Index of Pages
+	\tableofcontents \pagebreak
+
+	% Content
+	\input{doc_modify/content.tex}
+
+\end{document}
