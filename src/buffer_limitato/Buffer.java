@@ -47,9 +47,11 @@ class Produttore extends Thread{
         int i = 0;
         while (i < 200){
             synchronized (b){
-                b.put("Pippo");
-                System.out.println("messo numero " + i);
-                i++;
+                try {
+                    b.put("Pippo");
+                    System.out.println("messo numero " + i);
+                    i++;
+                }catch (InterruptedException e){}
             }
 
         }
@@ -66,8 +68,10 @@ class Consumatore extends Thread{
         int i = 0;
         while (i < 200){
             synchronized (b){
-                System.out.println("preso numero " + b.take() + " numero " + i);
-                i++;
+                try {
+                    System.out.println("preso numero " + b.take() + " numero " + i);
+                    i++;
+                }catch (InterruptedException e) {}
             }
 
         }
