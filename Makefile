@@ -1,22 +1,33 @@
 # Makefile da inserire nella root dei sorgenti del progetto.
+JFLAGS = -g
+JC = javac
+JA = java
+SRC = src
+P = Puzzle
+S = Solver
+IO = FileInputOutput
+E = MyException
+input = input_files/input1.txt
+output = output_files/file_esempio_out.txt
 
-# parte2:
-#	@if [ ! -d parte2 ]; then
-#		mkdir part2
-#		cp -r src parte1/src
-#		cp -r input_files parte2/input_files
-#		cp -r output_files parte2/output_files
-#		cp -r relazione/documenti_finali parte2/relazione
-#	else
-#		echo "Cartella già presente. Non serve creare una nuova struttura!";
-#	fi
+default:
+	@cd $(SRC) && make compile
 
-doc:
-	rm relazione/documenti_finali/relazione_parte_1.pdf
-	cp relazione/documentazione/relazione_parte_1/relazione_parte_1.pdf relazione/documenti_finali/relazione_parte_1.pdf
-	@echo "Copia documenti finali completata."
+compile:
+	$(JC) $(SRC)/$(E)/*.java
+	$(JC) $(SRC)/$(P)/Tile.java
+	$(JC) $(SRC)/$(P)/Puzzle.java
+	$(JC) $(SRC)/$(S)/*.java
+	$(JC) $(SRC)/$(P)/*.java
+	$(JC) $(SRC)/$(IO)/*.java
+	$(JC) $(SRC)/*.java
+	@echo "Compilazione completata"
+
+load:
+	@cd $(SRC) && $(JA) PuzzleSolver ../$(input) ../$(output)
 
 
+# Pulizia dei file .class
 clean:
 	$(RM) $(SRC)/*.class
 	$(RM) $(SRC)/$(E)/*.class
@@ -24,7 +35,3 @@ clean:
 	$(RM) $(SRC)/$(S)/*.class
 	$(RM) $(SRC)/$(IO)/*.class
 	@echo "Pulizia completata"
-
-clean-part1:
-	rm -r parte1;
-	@echo "Cartella parte1 rimossa";
