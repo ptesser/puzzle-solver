@@ -3,25 +3,16 @@ JFLAGS = -g
 JC = javac
 JA = java
 SRC = src
-P = Puzzle
-S = Solver
-IO = FileInputOutput
-E = MyException
+P = puzzle
+S = solver
+IO = fileinputoutput
+E = myexception
+L = logger
 input = input_files/input1.txt
 output = output_files/file_esempio_out.txt
 
 default:
 	@cd $(SRC) && make compile
-
-compile:
-	$(JC) $(SRC)/$(E)/*.java
-	$(JC) $(SRC)/$(P)/Tile.java
-	$(JC) $(SRC)/$(P)/Puzzle.java
-	$(JC) $(SRC)/$(S)/*.java
-	$(JC) $(SRC)/$(P)/*.java
-	$(JC) $(SRC)/$(IO)/*.java
-	$(JC) $(SRC)/*.java
-	@echo "Compilazione completata"
 
 load:
 	@cd $(SRC) && $(JA) PuzzleSolver ../$(input) ../$(output)
@@ -34,4 +25,5 @@ clean:
 	$(RM) $(SRC)/$(P)/*.class
 	$(RM) $(SRC)/$(S)/*.class
 	$(RM) $(SRC)/$(IO)/*.class
+	$(RM) $(SRC)/$(L)/*.class
 	@echo "Pulizia completata"

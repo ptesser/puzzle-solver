@@ -1,0 +1,12 @@
+gen 07, 2015 9:38:18 PM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Inizio risoluzione
+gen 07, 2015 9:38:18 PM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Dim Tile Array: 3942
+gen 07, 2015 9:38:18 PM solver.AngleTileThread run
+INFORMAZIONI: Thread 0 completato.
+gen 07, 2015 9:38:18 PM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Risoluzione completata
+gen 07, 2015 9:38:18 PM solver.AngleTileThread run
+INFORMAZIONI: Thread 2 completato.
+gen 07, 2015 9:38:18 PM solver.AngleTileThread run
+INFORMAZIONI: Thread 1 completato.

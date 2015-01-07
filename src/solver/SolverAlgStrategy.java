@@ -11,7 +11,10 @@ import java.util.Set;
  * @version 0.1
  */
 public class SolverAlgStrategy implements SolverStrategy {
-
+    /**
+     *
+     * @param o puzzle da risolvere
+     */
     @Override
     public void executeSolve(Puzzle o) {
 
@@ -60,8 +63,5 @@ public class SolverAlgStrategy implements SolverStrategy {
             }
             System.out.println("Risoluzione completata.");
         }
-
-
-        }
-
+    }
 }
