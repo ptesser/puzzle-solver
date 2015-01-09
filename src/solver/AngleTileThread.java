@@ -14,7 +14,7 @@ public class AngleTileThread extends Thread{
     private int stop;
     private Tile[] arrayToSolve;
     private PuzzleCharacter puzzleSolve;
-    public SearchStatus sharedStatus;
+    public final SearchStatus sharedStatus;
 
     public AngleTileThread(int numThread, int start, int stop, Tile[] arrayToSolve, PuzzleCharacter p, SearchStatus s){
         this.numThread = numThread;

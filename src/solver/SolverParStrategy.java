@@ -10,8 +10,11 @@ import logger.Logger;
  * @version 0.1
  */
 public class SolverParStrategy implements  SolverStrategy{
+    private final SearchStatus sharedStatus;
 
-
+    public SolverParStrategy(){
+        this.sharedStatus = new SearchStatus(); // creazione dell'oggetto condiviso tra i Thread
+    }
     /**
      *
      * @param o puzzle da risolvere
@@ -46,7 +49,6 @@ public class SolverParStrategy implements  SolverStrategy{
                     posStartThread[i] = numItemThread * i;
                 }
 
-                SearchStatus sharedStatus = new SearchStatus(); // creazione dell'oggetto condiviso tra i Thread
 
                 for (int i = 0; i < numThread; ++i){
                     if (i == numThread-1){
