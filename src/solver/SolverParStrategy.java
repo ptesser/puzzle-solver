@@ -35,25 +35,41 @@ public class SolverParStrategy implements  SolverStrategy{
                 Tile[] tileArray = new Tile[dimTileArray];
                 tileArray = p.getPuzzleElementToSolve().values().toArray(tileArray);
 
-                int numThread = 3; // decido quanti thread voglio lanciare
+                int numThread = 3; // decido quanti thread voglio lanciare per la ricerca del primo in alto a sinistra e dell'ultima in basso a sinistra
                 int numLastItem = dimTileArray % numThread; // se la divisione non è esatta mi calcolo i rimanente e gli inserisco nell'ultimo thread
                 int numItemThread = dimTileArray / 3;
                 int[] posStartThread = new int[numThread];
+
+
 
                 for (int i = 0; i < numThread; ++i){
                     posStartThread[i] = numItemThread * i;
                 }
 
+                SearchStatus sharedStatus = new SearchStatus(); // creazione dell'oggetto condiviso tra i Thread
+
                 for (int i = 0; i < numThread; ++i){
                     if (i == numThread-1){
-                        AngleTileThread t = new AngleTileThread(i, posStartThread[i], posStartThread[i]+numLastItem-1, tileArray, p);
+                        AngleTileThread t = new AngleTileThread(i, posStartThread[i], (posStartThread[i] + numItemThread)+numLastItem-1, tileArray, p, sharedStatus);
                         t.start();
                     }else{
-                        AngleTileThread t = new AngleTileThread(i, posStartThread[i], posStartThread[i]-1, tileArray, p);
+                        AngleTileThread t = new AngleTileThread(i, posStartThread[i], (posStartThread[i] + numItemThread)-1, tileArray, p, sharedStatus);
                         t.start();
                     }
                 }
-                // serve sincronizzazione prima di continuare il main
+
+                // ciclo che itera sulla condizione dell'oggetto condiviso finché non viene trovato il primo e l'ultimo elemento della prima colonna
+                synchronized (sharedStatus){
+                    while (!sharedStatus.getFindFirstColFirstTile() || !sharedStatus.getFindFirstColLastTile()){
+                        try {
+                            sharedStatus.wait();
+                        }catch (InterruptedException e){
+                            Logger.logger.info("InterruptedException");
+                        }
+                    }
+                }
+
+
 
                 Logger.logger.info("Risoluzione completata");
                 System.out.println("Risoluzione completata.");

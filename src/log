@@ -1,12 +1,28 @@
-gen 07, 2015 9:38:18 PM solver.SolverParStrategy executeSolve
+gen 09, 2015 4:14:21 PM solver.SolverParStrategy executeSolve
 INFORMAZIONI: Inizio risoluzione
-gen 07, 2015 9:38:18 PM solver.SolverParStrategy executeSolve
+gen 09, 2015 4:14:21 PM solver.SolverParStrategy executeSolve
 INFORMAZIONI: Dim Tile Array: 3942
-gen 07, 2015 9:38:18 PM solver.AngleTileThread run
-INFORMAZIONI: Thread 0 completato.
-gen 07, 2015 9:38:18 PM solver.SolverParStrategy executeSolve
-INFORMAZIONI: Risoluzione completata
-gen 07, 2015 9:38:18 PM solver.AngleTileThread run
-INFORMAZIONI: Thread 2 completato.
-gen 07, 2015 9:38:18 PM solver.AngleTileThread run
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Pos di partenza del thread 0 : 0
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Pos di partenza del thread 1 : 1314
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Pos di arrivo del thread 0 : 1313
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Pos di arrivo del thread 1 : 2627
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Tile in alto a sinistra trovato nel thread: 0
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
 INFORMAZIONI: Thread 1 completato.
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Tile in basso a sinistra trovato nel thread: 0
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Thread 0 completato.
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Pos di partenza del thread 2 : 2628
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Pos di arrivo del thread 2 : 3941
+gen 09, 2015 4:14:21 PM solver.AngleTileThread run
+INFORMAZIONI: Thread 2 completato.
+gen 09, 2015 4:14:21 PM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Risoluzione completata
