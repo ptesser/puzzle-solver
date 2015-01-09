@@ -47,6 +47,8 @@ public class AngleTileThread extends Thread{
             if (idSouth.equals("VUOTO") && idWest.equals("VUOTO")){
                 findLastTile = true;
                 puzzleSolve.setPuzzleElementSolved(puzzleSolve.getNumRow()-1, 0, currTile);
+                int num = puzzleSolve.getNumRow()-1;
+                Logger.logger.info("id last: " + currTile.getId());
             }
 
         }
