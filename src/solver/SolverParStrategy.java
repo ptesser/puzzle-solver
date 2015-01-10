@@ -64,16 +64,34 @@ public class SolverParStrategy implements  SolverStrategy{
                         try {
                             sharedStatus.wait();
                         }catch (InterruptedException e){
-                            Logger.logger.info("InterruptedException");
+                            Logger.logger.info("InterruptedException caused by a wait() method");
                         }
                     }
                 }
 
                 /* trovo la prima colonna a partire dal primo e dall'ultimo elemento della prima colonna */
-                FirstColThread FirstToHalfThread = new FirstColThread(0, (p.getNumRow()/2), "down");
-                FirstColThread LastToHalfThread = new FirstColThread(p.getNumRow()-1,p.getNumRow()/2+1,"up");
+                FirstColThread FirstToHalfThread = new FirstColThread(0, (p.getNumRow()/2), "down", p, sharedStatus);
+                FirstColThread LastToHalfThread = new FirstColThread(p.getNumRow() -1, p.getNumRow()/2+1, "up", p, sharedStatus);
                 FirstToHalfThread.start();
                 LastToHalfThread.start();
+
+
+                synchronized (sharedStatus){
+                    while (!sharedStatus.getFindFirstToHalf() || !sharedStatus.getFindLastToHalf()){
+                        try {
+                            sharedStatus.wait();
+                        }catch (InterruptedException e){
+                            Logger.logger.info("InterruptedException caused by a wait() method");
+                        }
+                    }
+                }
+
+
+                Logger.logger.info("*** " + p.getPuzzleElementSolved()[2][0].getId());
+                Logger.logger.info("*** " + p.getPuzzleElementSolved()[27][0].getId());
+                Logger.logger.info("*** " + p.getPuzzleElementSolved()[28][0].getId());
+                Logger.logger.info("*** " + p.getPuzzleElementSolved()[53][0].getId());
+
 
                 /* scorro un tot di righe su ogni thread in base al numero che decido */
 

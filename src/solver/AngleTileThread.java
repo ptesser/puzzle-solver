@@ -16,6 +16,15 @@ public class AngleTileThread extends Thread{
     private PuzzleCharacter puzzleSolve;
     public final SearchStatus sharedStatus;
 
+    /**
+     *
+     * @param numThread il numero del thread avviato
+     * @param start la posizione dalla quale iniziare la ricerca dei pezzi richiesti
+     * @param stop la posizione nella quale terminare la ricerca dei pezzi richiesti
+     * @param arrayToSolve l'hashmap vista in forma di array mono dimensionale, da scorrere per trovare i pezzi richiesti
+     * @param p il Puzzle generale
+     * @param s l'oggetto condiviso con gli altri thread per scambiarsi informazioni
+     */
     public AngleTileThread(int numThread, int start, int stop, Tile[] arrayToSolve, PuzzleCharacter p, SearchStatus s){
         this.numThread = numThread;
         this.start = start;
