@@ -5,10 +5,20 @@ package solver;
  * @version 0.1
  */
 public class SearchStatus {
-    private boolean findFirstColFirstTile = false;
-    private boolean findFirstColLastTile = false;
-    private boolean findFirstToHalf = false;
-    private boolean findLastToHalf = false;
+
+    private boolean findFirstColFirstTile;
+    private boolean findFirstColLastTile;
+    private boolean findFirstToHalf;
+    private boolean findLastToHalf;
+    private int countRowThread;
+
+    public SearchStatus(){
+        this.findFirstColFirstTile = false;
+        this.findFirstColLastTile = false;
+        this.findFirstToHalf = false;
+        this.findLastToHalf = false;
+        this.countRowThread = 0;
+    }
     /**
      *
      * @return il valore che dice se il primo elemento della prima colonna è stato trovato
@@ -44,6 +54,14 @@ public class SearchStatus {
 
     /**
      *
+     * @return il valore che dice quanti thread per comporre le righe somo terminati
+     */
+    public final int getCountRowThread(){
+        return this.countRowThread;
+    }
+
+    /**
+     *
      * @param f valore true/false da settare a seconda se è stato trovato o meno il primo elemento della prima colonna
      */
 
@@ -73,5 +91,13 @@ public class SearchStatus {
      */
     public final void setFindLastToHalf(boolean s){
         this.findLastToHalf = s;
+    }
+
+    /**
+     *
+     * @param c valore intero che setta il numero di thread conclusi per comporre le righe
+     */
+    public final void setCountRowThread(int c){
+        this.countRowThread = c;
     }
 }

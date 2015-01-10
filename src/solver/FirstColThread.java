@@ -8,12 +8,9 @@ import puzzle.Tile;
  * @author Tesser Paolo
  * @version 0.1
  */
-public class FirstColThread extends Thread {
-    private int start;
-    private int stop;
-    private PuzzleCharacter puzzleSolve;
+public class FirstColThread extends BasicThread {
+
     private String type;
-    public final SearchStatus sharedStatus;
 
     /**
      *
@@ -24,40 +21,37 @@ public class FirstColThread extends Thread {
      * @param s l'oggetto condiviso con gli altri thread per scambiarsi informazioni
      */
     public FirstColThread(int start, int stop, String t, PuzzleCharacter p, SearchStatus s){
-        this.start = start;
-        this.stop = stop;
+        super(start,stop,p,s);
         this.type = t;
-        this.puzzleSolve = p;
-        this.sharedStatus = s;
     }
 
     public void run(){
-        Logger.logger.info("Pos start: " + this.start + ". Pos stop: " + this.stop + ". Type: " + this.type);
+        Logger.logger.info("Pos start: " + this.getStart() + ". Pos stop: " + this.getStop() + ". Type: " + this.type);
 
         if (this.type.equals("down")){
-            for (int i = this.start; i < this.stop; i++){
-                Tile nowTile = puzzleSolve.getPuzzleElementSolved()[i][0]; // prelevo il pezzo corrente
+            for (int i = this.getStart(); i < this.getStop(); i++){
+                Tile nowTile = this.getPuzzleSolve().getPuzzleElementSolved()[i][0]; // prelevo il pezzo corrente
                 String idTileSud = nowTile.getIdSouth(); // mi ricavo il suo id sud
-                Tile newTileSud = puzzleSolve.getPuzzleElementToSolve().get(idTileSud); // prelevo il pezzo a sud dell'id corrente
-                puzzleSolve.setPuzzleElementSolved(i+1, 0, newTileSud); // salvo il pezzo a sud nella prossima posizione dell'array
+                Tile newTileSud = this.getPuzzleSolve().getPuzzleElementToSolve().get(idTileSud); // prelevo il pezzo a sud dell'id corrente
+                this.getPuzzleSolve().setPuzzleElementSolved(i+1, 0, newTileSud); // salvo il pezzo a sud nella prossima posizione dell'array
 
-                synchronized (sharedStatus){
-                    sharedStatus.setFindFirstToHalf(true);
-                    sharedStatus.notify();
+                synchronized (this.getSharedStatus()){
+                    this.getSharedStatus().setFindFirstToHalf(true);
+                    this.getSharedStatus().notify();
                 }
             }
         }
 
         if (this.type.equals("up")){
-            for (int i = this.start; i > this.stop; i--){
-                Tile nowTile = puzzleSolve.getPuzzleElementSolved()[i][0]; // prelevo il pezzo corrente
+            for (int i = this.getStart(); i > this.getStop(); i--){
+                Tile nowTile = this.getPuzzleSolve().getPuzzleElementSolved()[i][0]; // prelevo il pezzo corrente
                 String idTileNorth = nowTile.getIdNorth(); // mi ricavo il suo id nord
-                Tile newTileNorth = puzzleSolve.getPuzzleElementToSolve().get(idTileNorth); // prelevo il pezzo a nord dell'id corrente
-                puzzleSolve.setPuzzleElementSolved(i-1, 0, newTileNorth); // salvo il pezzo a sud nella prossima posizione dell'array
+                Tile newTileNorth = this.getPuzzleSolve().getPuzzleElementToSolve().get(idTileNorth); // prelevo il pezzo a nord dell'id corrente
+                this.getPuzzleSolve().setPuzzleElementSolved(i-1, 0, newTileNorth); // salvo il pezzo a sud nella prossima posizione dell'array
 
-                synchronized (sharedStatus){
-                    sharedStatus.setFindLastToHalf(true);
-                    sharedStatus.notify();
+                synchronized (this.getSharedStatus()){
+                    this.getSharedStatus().setFindLastToHalf(true);
+                    this.getSharedStatus().notify();
                 }
             }
         }

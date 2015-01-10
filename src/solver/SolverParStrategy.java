@@ -75,7 +75,6 @@ public class SolverParStrategy implements  SolverStrategy{
                 FirstToHalfThread.start();
                 LastToHalfThread.start();
 
-
                 synchronized (sharedStatus){
                     while (!sharedStatus.getFindFirstToHalf() || !sharedStatus.getFindLastToHalf()){
                         try {
@@ -87,19 +86,13 @@ public class SolverParStrategy implements  SolverStrategy{
                 }
 
 
-                Logger.logger.info("*** " + p.getPuzzleElementSolved()[2][0].getId());
-                Logger.logger.info("*** " + p.getPuzzleElementSolved()[27][0].getId());
-                Logger.logger.info("*** " + p.getPuzzleElementSolved()[28][0].getId());
-                Logger.logger.info("*** " + p.getPuzzleElementSolved()[53][0].getId());
-
-
                 /* scorro un tot di righe su ogni thread in base al numero che decido */
 
 
 
 
                 Logger.logger.info("Risoluzione completata");
-                System.out.println("Risoluzione completata.");
+
             }
 
         } catch (ArrayStoreException e){
