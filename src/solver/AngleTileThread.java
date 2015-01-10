@@ -33,26 +33,24 @@ public class AngleTileThread extends Thread{
         Logger.logger.info("Pos di partenza del thread " + this.numThread + " : " + this.start);
         Logger.logger.info("Pos di arrivo del thread " + this.numThread + " : " + this.stop);
 
-        for (int i = this.start; i <= this.stop; ++i ){
+        for (int i = this.start; i <= this.stop; ++i ){ // scorro la porzione di array decisa dalle variabili start e stop
             Tile currTile = arrayToSolve[i];
             String idNorth = currTile.getIdNorth();
             String idWest = currTile.getIdWest();
             String idSouth = currTile.getIdSouth();
-            // Logger.logger.info("Tile. North: " + idNorth + " - West: " + idWest + " - South: " + idSouth);
-
+            /* controllo se il pezzo corrente è il primo in alto a sinistra */
             if (idNorth.equals("VUOTO") && idWest.equals("VUOTO")){
                 findFirstTile = true;
                 puzzleSolve.setPuzzleElementSolved(0, 0, currTile);
             }
+            /* controllo se il pezzo corrente è il primo in basso a sinistra */
             if (idSouth.equals("VUOTO") && idWest.equals("VUOTO")){
                 findLastTile = true;
                 puzzleSolve.setPuzzleElementSolved(puzzleSolve.getNumRow()-1, 0, currTile);
-                int num = puzzleSolve.getNumRow()-1;
-                Logger.logger.info("id last: " + currTile.getId());
             }
 
         }
-
+        /* se è il primo in alto a sinista, segno che l'ho trovato e risveglio thread 'Main' */
         if (findFirstTile){
             synchronized (this.sharedStatus) {
                 Logger.logger.info("Tile in alto a sinistra trovato nel thread: " + this.numThread);
@@ -60,6 +58,7 @@ public class AngleTileThread extends Thread{
                 sharedStatus.notify();
             }
         }
+        /* se è il primo in basso a sinista, segno che l'ho trovato e risveglio thread 'Main' */
         if (findLastTile){
             synchronized (this.sharedStatus) {
                 Logger.logger.info("Tile in basso a sinistra trovato nel thread: " + this.numThread);
