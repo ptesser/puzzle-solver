@@ -28,8 +28,6 @@ public class SolverParStrategy implements  SolverStrategy{
 
                 PuzzleCharacter p = (PuzzleCharacter) o;
 
-                // Set set = p.getPuzzleElementToSolve().entrySet();
-
                 // trovo la dimensione dell'array
                 int dimTileArray = ((PuzzleCharacter) o).getPuzzleElementToSolve().size();
                 Logger.logger.info("Dim Tile Array: " + dimTileArray + ". Num col: " + p.getNumCol() + ". Num row: " + p.getNumRow());
@@ -60,7 +58,7 @@ public class SolverParStrategy implements  SolverStrategy{
                     }
                 }
 
-                // ciclo che itera sulla condizione dell'oggetto condiviso finché non viene trovato il primo e l'ultimo elemento della prima colonna
+                /* ciclo che itera sulla condizione dell'oggetto condiviso finché non viene trovato il primo e l'ultimo elemento della prima colonna */
                 synchronized (sharedStatus){
                     while (!sharedStatus.getFindFirstColFirstTile() || !sharedStatus.getFindFirstColLastTile()){
                         try {
@@ -71,8 +69,16 @@ public class SolverParStrategy implements  SolverStrategy{
                     }
                 }
 
-                Logger.logger.info("Valore in alto a sinistra: " + p.getPuzzleElementSolved()[0][0].getId());
-                Logger.logger.info("Valore in basso a sinistra: " + p.getPuzzleElementSolved()[p.getNumRow()-1][0].getId());
+                /* trovo la prima colonna a partire dal primo e dall'ultimo elemento della prima colonna */
+                FirstColThread FirstToHalfThread = new FirstColThread(0, (p.getNumRow()/2), "down");
+                FirstColThread LastToHalfThread = new FirstColThread(p.getNumRow()-1,p.getNumRow()/2+1,"up");
+                FirstToHalfThread.start();
+                LastToHalfThread.start();
+
+                /* scorro un tot di righe su ogni thread in base al numero che decido */
+
+
+
 
                 Logger.logger.info("Risoluzione completata");
                 System.out.println("Risoluzione completata.");
