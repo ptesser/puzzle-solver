@@ -39,14 +39,14 @@ public class PuzzleSolver {
             puzzle1.solvePuzzle();
 
             /* prelevo l'output risolto nel formato che mi serve per la stampa e stampo */
-            /*
+
             ArrayList<String> outputContent = puzzle1.convertToArrayList();
             if (file instanceof FileIOMod1) {
                 ((FileIOMod1) file).writeContent(outputPath, outputContent, puzzle1.getNumRow(), puzzle1.getNumCol());
             } else {
                 System.out.println("Impossibile scrivere il puzzle su file.");
             }
-            */
+
 
         }
         catch (NumFieldRowExcpt e){

@@ -32,8 +32,8 @@ public class AngleTileThread extends BasicThread{
         boolean findFirstTile = false;
         boolean findLastTile = false;
 
-        Logger.logger.info("Pos di partenza del thread " + this.numThread + " : " + this.getStart());
-        Logger.logger.info("Pos di arrivo del thread " + this.numThread + " : " + this.getStop());
+        // Logger.logger.info("Pos di partenza del thread " + this.numThread + " per la ricerca degli elementi agli angoli della prima colonna: " + this.getStart());
+        // Logger.logger.info("Pos di arrivo del thread " + this.numThread + " per la ricerca degli elementi agli angoli della prima colonna: " + this.getStop());
 
         for (int i = this.getStart(); i <= this.getStop(); ++i ){ // scorro la porzione di array decisa dalle variabili start e stop
             Tile currTile = arrayToSolve[i];
@@ -55,7 +55,7 @@ public class AngleTileThread extends BasicThread{
         /* se è il primo in alto a sinista, segno che l'ho trovato e risveglio thread 'Main' */
         if (findFirstTile){
             synchronized (this.getSharedStatus()) {
-                Logger.logger.info("Tile in alto a sinistra trovato nel thread: " + this.numThread);
+                Logger.logger.info("Pezzo in alto a sinistra trovato nel thread: " + this.numThread);
                 this.getSharedStatus().setFindFirstColFirstTile(true);
                 this.getSharedStatus().notify();
             }
@@ -63,7 +63,7 @@ public class AngleTileThread extends BasicThread{
         /* se è il primo in basso a sinista, segno che l'ho trovato e risveglio thread 'Main' */
         if (findLastTile){
             synchronized (this.getSharedStatus()) {
-                Logger.logger.info("Tile in basso a sinistra trovato nel thread: " + this.numThread);
+                Logger.logger.info("Pezzo in basso a sinistra trovato nel thread: " + this.numThread);
                 this.getSharedStatus().setFindFirstColLastTile(true);
                 this.getSharedStatus().notify();
             }
