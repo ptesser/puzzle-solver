@@ -58,6 +58,7 @@ public class SolverParStrategy implements  SolverStrategy{
                 }
 
                 /* ciclo che itera sulla condizione dell'oggetto condiviso finché non viene trovato il primo e l'ultimo elemento della prima colonna */
+                /*
                 synchronized (sharedStatus){
                     while (!sharedStatus.getFindFirstColFirstTile() || !sharedStatus.getFindFirstColLastTile()){
                         try {
@@ -67,13 +68,14 @@ public class SolverParStrategy implements  SolverStrategy{
                         }
                     }
                 }
-
+                */
                 /* trovo la prima colonna a partire dal primo e dall'ultimo elemento della prima colonna */
+                /*
                 FirstColThread FirstToHalfThread = new FirstColThread(0, (p.getNumRow()/2), "down", p, sharedStatus);
                 FirstColThread LastToHalfThread = new FirstColThread(p.getNumRow() -1, p.getNumRow()/2+1, "up", p, sharedStatus);
                 FirstToHalfThread.start();
                 LastToHalfThread.start();
-
+                */
                 synchronized (sharedStatus){
                     while (!sharedStatus.getFindFirstToHalf() || !sharedStatus.getFindLastToHalf()){
                         try {
