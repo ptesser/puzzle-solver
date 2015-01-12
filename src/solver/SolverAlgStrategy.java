@@ -11,7 +11,10 @@ import java.util.Set;
  * @version 0.1
  */
 public class SolverAlgStrategy implements SolverStrategy {
-
+    /**
+     *
+     * @param o puzzle da risolvere
+     */
     @Override
     public void executeSolve(Puzzle o) {
 
@@ -43,10 +46,10 @@ public class SolverAlgStrategy implements SolverStrategy {
 
             // riordino la colonna più a sinistra
             for (int j = 0; j < (lengthRow - 1); j++){
-                Tile nowTile = p.getPuzzleElementSolved()[j][0];
-                String idTileSud = nowTile.getIdSouth();
-                Tile newTileSud = p.getPuzzleElementToSolve().get(idTileSud);
-                p.setPuzzleElementSolved(j+1,0,newTileSud);
+                Tile nowTile = p.getPuzzleElementSolved()[j][0]; // prelevo il pezzo corrente
+                String idTileSud = nowTile.getIdSouth(); // mi ricavo il suo id sud
+                Tile newTileSud = p.getPuzzleElementToSolve().get(idTileSud); // prelevo il pezzo a sud dell'id corrente
+                p.setPuzzleElementSolved(j+1,0,newTileSud); // salvo il pezzo a sud nella prossima posizione dell'array
             }
 
             // riordino tutte le righe a partire dal primo elemento della colonna più a sinistra di ciascuna
@@ -60,8 +63,5 @@ public class SolverAlgStrategy implements SolverStrategy {
             }
             System.out.println("Risoluzione completata.");
         }
-
-
-        }
-
+    }
 }

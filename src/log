@@ -1,0 +1,30 @@
+gen 11, 2015 9:29:33 PM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Inizio risoluzione
+gen 11, 2015 9:29:33 PM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Dim Tile Array: 3942. Num col: 73. Num row: 54
+gen 11, 2015 9:29:33 PM solver.AngleTileThread run
+INFORMAZIONI: Thread 1 completato.
+gen 11, 2015 9:29:33 PM solver.AngleTileThread run
+INFORMAZIONI: Pezzo in alto a sinistra trovato nel thread: 0
+gen 11, 2015 9:29:33 PM solver.AngleTileThread run
+INFORMAZIONI: Thread 2 completato.
+gen 11, 2015 9:29:33 PM solver.AngleTileThread run
+INFORMAZIONI: Pezzo in basso a sinistra trovato nel thread: 0
+gen 11, 2015 9:29:33 PM solver.FirstColThread run
+INFORMAZIONI: Pos start: 0. Pos stop: 27. Type: down
+gen 11, 2015 9:29:33 PM solver.FirstColThread run
+INFORMAZIONI: Pos start: 53. Pos stop: 28. Type: up
+gen 11, 2015 9:29:33 PM solver.AngleTileThread run
+INFORMAZIONI: Thread 0 completato.
+gen 11, 2015 9:29:33 PM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Il numero di righe per thread è: 13. Le righe finali sono: 2
+gen 11, 2015 9:29:33 PM solver.RowThread run
+INFORMAZIONI: Thread 0 completato. Ci sono ancora 3 threads in esecuzione.
+gen 11, 2015 9:29:33 PM solver.RowThread run
+INFORMAZIONI: Thread 1 completato. Ci sono ancora 2 threads in esecuzione.
+gen 11, 2015 9:29:33 PM solver.RowThread run
+INFORMAZIONI: Thread 2 completato. Ci sono ancora 1 threads in esecuzione.
+gen 11, 2015 9:29:33 PM solver.RowThread run
+INFORMAZIONI: Thread 3 completato. Ci sono ancora 0 threads in esecuzione.
+gen 11, 2015 9:29:33 PM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Risoluzione completata
