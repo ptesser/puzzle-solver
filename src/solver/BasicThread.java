@@ -6,11 +6,11 @@ import puzzle.PuzzleCharacter;
  * @author Tesser Paolo
  * @version 0.1
  */
-public abstract class BasicThread extends Thread{
-    private int start;
-    private int stop;
-    private PuzzleCharacter puzzleSolve;
-    private final SearchStatus sharedStatus;
+public abstract class BasicThread implements Runnable{
+    private int _start;
+    private int _stop;
+    private PuzzleCharacter _puzzleSolve;
+    private final SearchStatus _sharedStatus;
 
     /**
      *
@@ -20,10 +20,10 @@ public abstract class BasicThread extends Thread{
      * @param s l'oggetto condiviso con gli altri thread per scambiarsi informazioni
      */
     public BasicThread(int start, int stop, PuzzleCharacter p, SearchStatus s){
-        this.start = start;
-        this.stop = stop;
-        this.puzzleSolve = p;
-        this.sharedStatus = s;
+        this._start = start;
+        this._stop = stop;
+        this._puzzleSolve = p;
+        this._sharedStatus = s;
     }
 
     /**
@@ -31,7 +31,7 @@ public abstract class BasicThread extends Thread{
      * @return la posizione di partenza per eseguire la composizione/ricerca
      */
     public final int getStart(){
-        return this.start;
+        return this._start;
     }
 
     /**
@@ -39,7 +39,7 @@ public abstract class BasicThread extends Thread{
      * @return la posizione di fine della composizione/ricerca
      */
     public final int getStop(){
-        return this.stop;
+        return this._stop;
     }
 
     /**
@@ -47,7 +47,7 @@ public abstract class BasicThread extends Thread{
      * @return l'oggetto condiviso da i thread per scambiarsi
      */
     public final SearchStatus getSharedStatus(){
-        return this.sharedStatus;
+        return this._sharedStatus;
     }
 
     /**
@@ -55,7 +55,7 @@ public abstract class BasicThread extends Thread{
      * @return l'oggetto PuzzleCharachter da risolvere
      */
     public final PuzzleCharacter getPuzzleSolve(){
-        return this.puzzleSolve;
+        return this._puzzleSolve;
     }
 
 

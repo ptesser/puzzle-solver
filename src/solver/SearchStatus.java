@@ -23,7 +23,7 @@ public class SearchStatus {
      *
      * @return il valore che dice se il primo elemento della prima colonna è stato trovato
      */
-    public final boolean getFindFirstColFirstTile (){
+    public final synchronized boolean isFindFirstColFirstTile (){
         return this.findFirstColFirstTile;
     }
 
@@ -31,7 +31,7 @@ public class SearchStatus {
      *
      * @return il valore che dice se l'ultimo elemento della prima colonna è stato trovato
      */
-    public final boolean getFindFirstColLastTile (){
+    public final synchronized boolean isFindFirstColLastTile (){
         return this.findFirstColLastTile;
     }
 
@@ -40,7 +40,7 @@ public class SearchStatus {
      *
      * @return il valore che dice se la prima metà della prima colonna dal primo elemento alla metà è stata composta
      */
-    public final boolean getFindFirstToHalf(){
+    public final synchronized boolean isFindFirstToHalf(){
         return this.findFirstToHalf;
     }
 
@@ -48,7 +48,7 @@ public class SearchStatus {
      *
      * @return il valore che dice se la seconda metà della prima colonna dall'ultimo elemento alla metà è stata composta
      */
-    public final boolean getFindLastToHalf(){
+    public final synchronized boolean isFindLastToHalf(){
         return this.findLastToHalf;
     }
 
@@ -56,7 +56,7 @@ public class SearchStatus {
      *
      * @return il valore che dice quanti thread per comporre le righe somo terminati
      */
-    public final int getCountRowThread(){
+    public final  synchronized int getCountRowThread(){
         return this.countRowThread;
     }
 
@@ -65,7 +65,7 @@ public class SearchStatus {
      * @param f valore true/false da settare a seconda se è stato trovato o meno il primo elemento della prima colonna
      */
 
-    public final void setFindFirstColFirstTile(boolean f){
+    public final synchronized void setFindFirstColFirstTile(boolean f){
         this.findFirstColFirstTile = f;
     }
 
@@ -73,7 +73,7 @@ public class SearchStatus {
      *
      * @param f valore true/false da settare a seconda se è stato trovato o meno l'ultimo elemento della prima colonna
      */
-    public final void setFindFirstColLastTile(boolean f){
+    public final synchronized void setFindFirstColLastTile(boolean f){
         this.findFirstColLastTile = f;
     }
 
@@ -81,7 +81,7 @@ public class SearchStatus {
      *
      * @param s valore true/false da settare a seconda se si ha finito o meno di comporre la prima colonna dall'alto verso la metà
      */
-    public final void setFindFirstToHalf(boolean s){
+    public final synchronized void setFindFirstToHalf(boolean s){
         this.findFirstToHalf = s;
     }
 
@@ -89,7 +89,7 @@ public class SearchStatus {
      *
      * @param s valore true/false da settare a seconda se si ha finito o meno di comporre la prima colonna dal basso verso la metà
      */
-    public final void setFindLastToHalf(boolean s){
+    public final synchronized void setFindLastToHalf(boolean s){
         this.findLastToHalf = s;
     }
 
@@ -97,7 +97,7 @@ public class SearchStatus {
      *
      * @param c valore intero che setta il numero di thread conclusi per comporre le righe
      */
-    public final void setCountRowThread(int c){
+    public final synchronized void setCountRowThread(int c){
         this.countRowThread = c;
     }
 }

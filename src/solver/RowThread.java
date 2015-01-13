@@ -26,8 +26,7 @@ public class RowThread extends BasicThread {
     }
 
     public void run(){
-
-        // Logger.logger.info("Inizio: " + this.getStart() + ". Fine: " + this.getStop());
+        /* VERSIONE SENZA L'USO DEI THREAD POOL
 
         for (int j = this.getStart(); j <= this.getStop(); j++){
             for (int z = 0; z < (this.getPuzzleSolve().getNumCol()-1); z++){
@@ -37,15 +36,25 @@ public class RowThread extends BasicThread {
                 this.getPuzzleSolve().setPuzzleElementSolved(j,z+1,newTileEast);
             }
         }
+        */
+
+        for (int z = 0; z < (this.getPuzzleSolve().getNumCol()-1); z++){
+            Tile nowTile = this.getPuzzleSolve().getPuzzleElementSolved()[this.getStart()][z];
+            String idTileEast = nowTile.getIdEast();
+            Tile newTileEast = this.getPuzzleSolve().getPuzzleElementToSolve().get(idTileEast);
+            this.getPuzzleSolve().setPuzzleElementSolved(this.getStart(),z+1,newTileEast);
+        }
 
         synchronized (this.getSharedStatus()){
             int count = this.getSharedStatus().getCountRowThread();
             this.getSharedStatus().setCountRowThread(++count);
             if (this.getSharedStatus().getCountRowThread() == this.totalRowThread)
-                this.getSharedStatus().notify();
+                this.getSharedStatus().notifyAll();
+            Logger.logger.info("Count Thread:" + this.getSharedStatus().getCountRowThread());
 
-            Logger.logger.info("Thread " + this.numThread + " completato. Ci sono ancora " + (this.totalRowThread-this.getSharedStatus().getCountRowThread()) + " threads in esecuzione.");
+           // Logger.logger.info("Thread " + this.numThread + " completato. Ci sono ancora " + (this.totalRowThread-this.getSharedStatus().getCountRowThread()) + " threads in esecuzione.");
         }
+
 
     }
 }

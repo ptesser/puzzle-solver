@@ -57,9 +57,9 @@ public class AngleTileThread extends BasicThread{
             synchronized (this.getSharedStatus()) {
                 Logger.logger.info("Pezzo in alto a sinistra trovato nel thread: " + this.numThread);
                 this.getSharedStatus().setFindFirstColFirstTile(true);
-                FirstColThread FirstToHalfThread = new FirstColThread(0, (this.getPuzzleSolve().getNumRow()/2), "down", this.getPuzzleSolve(), this.getSharedStatus());
-                FirstToHalfThread.start();
-                // this.getSharedStatus().notify();
+                FirstColThread FirstToHalfTask = new FirstColThread(0, (this.getPuzzleSolve().getNumRow()/2), "down", this.getPuzzleSolve(), this.getSharedStatus());
+                Thread t = new Thread(FirstToHalfTask);
+                t.start();
             }
         }
         /* se è il primo in basso a sinista, segno che l'ho trovato e risveglio thread 'Main' */
@@ -67,9 +67,9 @@ public class AngleTileThread extends BasicThread{
             synchronized (this.getSharedStatus()) {
                 Logger.logger.info("Pezzo in basso a sinistra trovato nel thread: " + this.numThread);
                 this.getSharedStatus().setFindFirstColLastTile(true);
-                FirstColThread LastToHalfThread = new FirstColThread(this.getPuzzleSolve().getNumRow() -1, this.getPuzzleSolve().getNumRow()/2+1, "up", this.getPuzzleSolve(), this.getSharedStatus());
-                LastToHalfThread.start();
-                // this.getSharedStatus().notify();
+                FirstColThread LastToHalfTask = new FirstColThread(this.getPuzzleSolve().getNumRow() -1, this.getPuzzleSolve().getNumRow()/2+1, "up", this.getPuzzleSolve(), this.getSharedStatus());
+                Thread t = new Thread(LastToHalfTask);
+                t.start();
             }
         }
 
