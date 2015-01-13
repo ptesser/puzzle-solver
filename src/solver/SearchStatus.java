@@ -35,7 +35,6 @@ public class SearchStatus {
         return this.findFirstColLastTile;
     }
 
-
     /**
      *
      * @return il valore che dice se la prima metà della prima colonna dal primo elemento alla metà è stata composta

@@ -29,30 +29,45 @@ public class AngleTileThread extends BasicThread{
     }
 
     public void run(){
+
         boolean findFirstTile = false;
         boolean findLastTile = false;
+        boolean exitFor = false;
 
-        // Logger.logger.info("Pos di partenza del thread " + this.numThread + " per la ricerca degli elementi agli angoli della prima colonna: " + this.getStart());
-        // Logger.logger.info("Pos di arrivo del thread " + this.numThread + " per la ricerca degli elementi agli angoli della prima colonna: " + this.getStop());
+        /* Controllo nell'oggetto condiviso se qualche altro task non ha già trovato i pezzi che sto cercando*/
+        synchronized (this.getSharedStatus()){
+            if (this.getSharedStatus().isFindFirstColFirstTile() && this.getSharedStatus().isFindFirstColLastTile()){
+                exitFor = true;
+            }
+        }
 
-        for (int i = this.getStart(); i <= this.getStop(); ++i ){ // scorro la porzione di array decisa dalle variabili start e stop
+        /* Cerco il pezzo in alto a sinistra o in basso a sinistra nella porzione di array indicata da start e da stop */
+        for (int i = this.getStart(); i < this.getStop() && !exitFor; ++i ){
+            /* Mi ricavo i vari id che mi servono dal pezzo corrente */
             Tile currTile = arrayToSolve[i];
             String idNorth = currTile.getIdNorth();
             String idWest = currTile.getIdWest();
             String idSouth = currTile.getIdSouth();
+
             /* controllo se il pezzo corrente è il primo in alto a sinistra */
             if (idNorth.equals("VUOTO") && idWest.equals("VUOTO")){
                 findFirstTile = true;
                 this.getPuzzleSolve().setPuzzleElementSolved(0, 0, currTile);
             }
-            /* controllo se il pezzo corrente è il primo in basso a sinistra */
+            /* Controllo se il pezzo corrente è il primo in basso a sinistra */
             if (idSouth.equals("VUOTO") && idWest.equals("VUOTO")){
                 findLastTile = true;
                 this.getPuzzleSolve().setPuzzleElementSolved(this.getPuzzleSolve().getNumRow()-1, 0, currTile);
             }
+            /* Controllo nell'oggetto condiviso se nel frattempo qualche altro task non ha già trovato i pezzi che sto cercando */
+            synchronized (this.getSharedStatus()){
+                if (this.getSharedStatus().isFindFirstColFirstTile() && this.getSharedStatus().isFindFirstColLastTile()){
+                    exitFor = true;
+                }
+            }
 
         }
-        /* se è il primo in alto a sinista, segno che l'ho trovato e risveglio thread 'Main' */
+        /* Se è il primo in alto a sinista, segno che l'ho trovato e avvio il thread per comporre la prima metà della prima colonna partendo dall'alto */
         if (findFirstTile){
             synchronized (this.getSharedStatus()) {
                 Logger.logger.info("Pezzo in alto a sinistra trovato nel thread: " + this.numThread);
@@ -62,7 +77,7 @@ public class AngleTileThread extends BasicThread{
                 t.start();
             }
         }
-        /* se è il primo in basso a sinista, segno che l'ho trovato e risveglio thread 'Main' */
+        /* Se è il primo in basso a sinista, segno che l'ho trovato e avvio il thread per comporre la seconda metà della prima colonna partendo dal basso */
         if (findLastTile){
             synchronized (this.getSharedStatus()) {
                 Logger.logger.info("Pezzo in basso a sinistra trovato nel thread: " + this.numThread);
@@ -73,7 +88,7 @@ public class AngleTileThread extends BasicThread{
             }
         }
 
-        Logger.logger.info("Thread " + this.numThread + " completato.");
+        Logger.logger.info("Thread di ricerca degli angoli numero: " + this.numThread + " completato.");
     }
 
 
