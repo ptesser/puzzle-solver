@@ -12,6 +12,20 @@
 %
 
 \section{Algoritmo di risoluzione (parallelo)}
-TO DO
+L'algoritmo scelto per la risoluzione del puzzle è tipo di parallelo come richiesto dalla specifica relativa alla seconda parte del progetto. \\
+Per arrivare alla soluzione, le strutture dati introdotte nella prima parte rimangono invariate. Si userà quindi sempre una HashMap per i tasselli del puzzle ancora disordinati e un array bidimensionale per i vari pezzi in ordine corretto. \\
+Se nella precedente versione queste erano le uniche due strutture dati di cui l'algoritmo aveva bisogno, per la versione parallelizzata viene usato anche un array mono dimensionale di oggetti Tile che contiene in ordine casuale i valori della HashMap. \\
+Di seguito vengono esposte le sequenze che vengo eseguite e i thread che vengono lanciati dall'algoritmo, correlate da grafici che mostrano come esso agisca sulle strutture dati utilizzate.
+
+	\begin{enumerate}
+		\item \textbf{Ricerco il primo elemento del puzzle (quello in alto a sinistra) e quello in basso a sinistra.} \\
+		TO DO;
+		\item \textbf{Ordino la colonna più a sinistra (quella con i tasselli aventi id ovest uguale alla stringa VUOTO).} \\
+		TO DO;
+		\item \textbf{Ordino tutte le righe.} \\
+		TO DO.
+	\end{enumerate}
+
+
 
 
