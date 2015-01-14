@@ -13,21 +13,33 @@
 
 \section{Cambiamenti e Aggiunte}
 In questa sezione verranno descritti i cambiamenti apportati alla precedente versione del programma per permettere all'algoritmo di risoluzione di essere parallelizzato. \\
-In generale non vengono effettuate particolari rivisitazioni della precedente struttura, ma vengono introdotte nuove gerarchie ed estese alcune precedentemente create.
+In generale non vengono effettuate particolari rivisitazioni della precedente struttura, ma vengono introdotte nuove gerarchie ed estese alcune precedentemente create. \\
+Il client rappresentato dalla classe \textbf{PuzzleSolver} andrà modificato solo nella scelta della politica di esecuzione dell'algoritmo, che da sequenziale passerà a parallela utilizzando la nuova classe descritta nella sezione \ref{ssub:package_solver_1}.
 
 	\subsection{Estensioni} % (fold)
 	\label{sub:estensioni}
-		\subsubsection{Package Solver} % (fold)
-		\label{ssub:package_solver}
-		
+		\subsubsection{Package solver} % (fold)
+		\label{ssub:package_solver_1}
+		Questo package contiene le classi che gestiscono la risoluzione del puzzle. \\
+		Viene estesa la gerarchia che comprendeva alla base l'interfaccia \textbf{SolverStrategy} e come sottotipo la classe \textbf{SolverAlgStrategy}. \\
+		In aggiunta a quanto già fatto viene estesa l'interfaccia anche con la nuova classe \textbf{SolverParStrategy} responsabile della risoluzione parallela del puzzle.
+		TO DO (grafico)
 		% subsubsection package_solver (end)
 	% subsection estensioni (end)
 	
 	\subsection{Nuove gerarchie} % (fold)
 	\label{sub:nuove_gerarchie}
-		\subsubsection{Package Solver} % (fold)
-		\label{ssub:package_solver}
-		
+		\subsubsection{Package solver} % (fold)
+		\label{ssub:package_solver_2}
+		Questo package contiene le classi che gestiscono la risoluzione del puzzle. \\
+		In esso vengono aggiunte le classi che contengono l'attività logica
+		TO DO (grafico)
 		% subsubsection package_solver (end)
+		
+		\subsubsection{Package logger} % (fold)
+		\label{ssub:package_logger}
+		Questo package contiene solamente una classe che mi serve per la gestione di un file di log che viene usato per tracciare l'esecuzione del programma in alcuni punti. \\
+		Essendo non importante ai fini delle richieste del proponente non ne verrà fornita una rappresentazione grafica.
+		% subsubsection package_logger (end)
 	% subsection nuove_gerarchie (end)
 
