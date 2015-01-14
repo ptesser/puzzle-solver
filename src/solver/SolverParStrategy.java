@@ -101,7 +101,7 @@ public class SolverParStrategy implements SolverStrategy{
                 for (int i = 0; i < numRowPuzzle; ++i){
                     /* Eseguo la composizione delle righe solo se il numero di colonne è maggiore di 1, altrimenti vuol dire che le righe sono già tutte sistemate */
                     if (p.getNumCol() != 1) {
-                        RowThread task = new RowThread(i, i, 0, p, sharedStatus, numRowPuzzle);
+                        RowThread task = new RowThread(i, 0, p, sharedStatus, numRowPuzzle);
                         EXEC_ROWS.execute(task);
                     }
                 }

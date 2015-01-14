@@ -8,7 +8,6 @@ import puzzle.Tile;
  * @version 0.1
  */
 public class RowThread extends BasicThread {
-    private int numThread;
     private final int totalRowThread;
 
     /**
@@ -18,9 +17,8 @@ public class RowThread extends BasicThread {
      * @param p il Puzzle generale
      * @param s l'oggetto condiviso con gli altri thread per scambiarsi informazioni
      */
-    public RowThread(int num, int start, int stop, PuzzleCharacter p, SearchStatus s, int t){
+    public RowThread(int start, int stop, PuzzleCharacter p, SearchStatus s, int t){
         super(start,stop,p,s);
-        this.numThread = num;
         this.totalRowThread = t;
     }
 
