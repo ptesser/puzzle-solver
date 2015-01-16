@@ -1,0 +1,20 @@
+gen 16, 2015 10:13:45 AM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Dim Tile Array: 30. Num col: 5. Num row: 6
+gen 16, 2015 10:13:45 AM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Inizio risoluzione
+gen 16, 2015 10:13:45 AM solver.AngleTileThread run
+INFORMAZIONI: Pezzo in alto a sinistra trovato nel thread: 0
+gen 16, 2015 10:13:45 AM solver.AngleTileThread run
+INFORMAZIONI: Pezzo in basso a sinistra trovato nel thread: 0
+gen 16, 2015 10:13:45 AM solver.FirstColThread run
+INFORMAZIONI: Pos start: 0. Pos stop: 3. Type: down
+gen 16, 2015 10:13:45 AM solver.FirstColThread run
+INFORMAZIONI: Pos start: 5. Pos stop: 4. Type: up
+gen 16, 2015 10:13:45 AM solver.AngleTileThread run
+INFORMAZIONI: Thread di ricerca degli angoli numero: 2 completato.
+gen 16, 2015 10:13:45 AM solver.AngleTileThread run
+INFORMAZIONI: Thread di ricerca degli angoli numero: 1 completato.
+gen 16, 2015 10:13:45 AM solver.SolverParStrategy executeSolve
+INFORMAZIONI: Risoluzione completata
+gen 16, 2015 10:13:45 AM solver.AngleTileThread run
+INFORMAZIONI: Thread di ricerca degli angoli numero: 0 completato.
