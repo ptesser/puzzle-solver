@@ -1,5 +1,5 @@
 % File: gestione_thread.tex
-% Created: 2014/01/13
+% Created: 2014-01-13
 % Author: Tesser Paolo
 % Email: p.tesser921@gmail.com
 % 
@@ -7,7 +7,7 @@
 % Modification History
 % Version	Modifier Date	Author			Change
 % ====================================================================
-% 0.0.1		2015/01/13		Tesser Paolo	inserita sezione capitolo
+% 0.0.1		2015-01-13		Tesser Paolo	inserita sezione capitolo
 % ====================================================================
 %
 
@@ -20,15 +20,36 @@ Nella seguente sezione vengono descritte le conseguenze che possono avvenire con
 	Si può sempre valutare il caso peggiore e sapere al massimo quanti thread ci saranno in esecuzione nelle diverse fasi dell'esecuzione dell'algoritmo. \\
 	Di seguito verrà fornito il numero, illustrandolo in rapporto al flusso dell'algoritmo già descritto nella sezione \ref{sec:algoritmo_di_risoluzione_parallelo_}.
 		\begin{enumerate}
-			\item Durante la ricerca e la sistemazione del primo elemento del puzzle (quello in alto a sinistra) e quello in basso a sinistra TO DO;
-			\item Durante l'ordinamento della colonna più a sinistra TO DO;
-			\item Durante l'ordinamento di tutte le righe TO DO;
+			\item Durante la ricerca e la sistemazione del primo elemento del puzzle (quello in alto a sinistra e quello in basso a sinistra) il numero massimo di thread attivi nel caso peggiore di dimensione del puzzle in input è di 8:
+				\begin{itemize}
+					\item \textbf{5}: thread \textbf{AngleTileThread};
+					\item \textbf{2}: thread \textbf{FirstRowThread};
+					\item \textbf{1}: main thread.
+				\end{itemize}
+				\noindent
+				\textbf{Nota}: la successiva fase potrà essere già avviata in questa. Perciò il conteggio dei thread nel caso peggiore per quella, sarà relativo al momento in cui i thread AngleTileThread termineranno la loro esecuzione;
+				
+			\item Durante l'ordinamento della colonna più a sinistra avrò sempre massimo 3 thread attivi:
+				\begin{itemize}
+					\item \textbf{2}: thread \textbf{FirstColThread};
+					\item \textbf{1}: main thread.
+				\end{itemize}
+				
+			\item Durante l'ordinamento di tutte le righe il numero massimo di thread attivi nel caso peggiore di numero di righe presenti è di 7:
+				\begin{itemize}
+					\item \textbf{6}: thread che lanciano i diversi task \textbf{RowThread} che possono essere in numero superiore a 6 ed essere messi in coda sui diversi thread;
+					\item \textbf{1}: main thread.
+				\end{itemize}
 		\end{enumerate}
 	% subsection numero_thread (end)
 	
 	\subsection{Interferenze, Deadlock, Attesa attiva} % (fold)
 	\label{sub:interferenze_deadlock_attesa_attiva}
-	TO DO
+		\begin{itemize}
+			\item \textbf{Interferenze}: questo fenomeno non può accadere mai sull'oggetto condiviso, in quanto ogni accesso ad esso da parte dei diversi thread in esecuzione, è effettuato dentro a una sezione sicura garantita dal costrutto \textbf{synchronized} sull'oggetto appunto condiviso. Per la natura dell'algoritmo parallelo i campi dati della classe \textbf{PuzzleCharacter} possono anche non essere sincronizzati;
+			\item \textbf{Deadlock}: questo fenomeno non può accadere in quanto il codice è stato progettato per garantire che mai nessun oggetto debba aspettare il lock detenuto da un altro oggetto che a sua volta sta aspettando il lock detenuto dall'oggetto in attesa;
+			\item \textbf{Attesa attiva}: questo fenomeno non si verificherà mai, in quanto l'unico thread che cicla su una condizione è il main. Durante le iterazioni però, se la condizione è vera e quindi si continua ad ``aspettare'' esso viene sospeso attraverso il metodo \textbf{wait()}. Questo garantisce che il thread si metta in attesa passiva e non spreca risorse sul processore fintanto che qualcun altro non lo risvegli tramite una \textbf{notifyAll()}.
+		\end{itemize}
 	% subsection interferenze_deadlock_attesa_attiva (end)
 	
 % section gestione_dei_thread (end)

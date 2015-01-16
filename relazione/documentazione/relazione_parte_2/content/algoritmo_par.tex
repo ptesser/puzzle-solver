@@ -1,5 +1,5 @@
 % File: algoritmo_par.tex
-% Created: 2014/01/13
+% Created: 2014-01-13
 % Author: Tesser Paolo
 % Email: p.tesser921@gmail.com
 % 
@@ -7,7 +7,7 @@
 % Modification History
 % Version	Modifier Date	Author			Change
 % ====================================================================
-% 0.0.1		2015/01/13		Tesser Paolo	inserita sezione capitolo
+% 0.0.1		2015-01-13		Tesser Paolo	inserita sezione capitolo
 % ====================================================================
 %
 
@@ -16,15 +16,22 @@
 L'algoritmo scelto per la risoluzione del puzzle è tipo di parallelo come richiesto dalla specifica relativa alla seconda parte del progetto. \\
 Per arrivare alla soluzione, le strutture dati introdotte nella prima parte rimangono invariate. Si userà quindi sempre una HashMap per i tasselli del puzzle ancora disordinati e un array bidimensionale per i vari pezzi in ordine corretto. \\
 Se nella precedente versione queste erano le uniche due strutture dati di cui l'algoritmo aveva bisogno, per la versione parallelizzata viene usato anche un array mono dimensionale di oggetti Tile che contiene in ordine casuale i valori della HashMap. \\
-Di seguito vengono esposte le sequenze che vengo eseguite e i thread che vengono lanciati dall'algoritmo, correlate da grafici che mostrano come essi agiscano sulle strutture dati utilizzate.
+Di seguito vengono esposte le sequenze che vengo eseguite e i thread che vengono lanciati dall'algoritmo, correlate da grafici che mostrano come essi agiscano sulle strutture dati utilizzate. \\ \\
+\textbf{Nota}: nella seguente spiegazione, a differenza della precedente versione della relazione, non verranno introdotti grafici esplicativi della risoluzione del puzzle in quanto molto simili come logica a quelli già inseriti nella parte1.
 
 	\begin{enumerate}
 		\item \textbf{Ricerco il primo elemento del puzzle (quello in alto a sinistra) e quello in basso a sinistra.} \\
-		TO DO;
+		Per fare ciò utilizzo diversi thread, in un numero arbitrario a seconda della dimensione del puzzle, che partono da posizioni diverse dell'array mono dimensionale citato precedentemente fino alla posizione meno uno di dove andrà a partire il thread lanciato successivamente. \\
+		Una volta trovati vengono lanciati due thread per ordinare la colonna più a sinistra come vedremo nel passo seguente;
 		\item \textbf{Ordino la colonna più a sinistra (quella con i tasselli aventi id ovest uguale alla stringa VUOTO).} \\
-		TO DO;
+		Per fare questo, come detto precedentemente, vengono lanciati due thread. In particolare, quando è stato trovato il pezzo con idNorth e idWest uguali a VUOTO può essere avviato il thread che ordina la prima metà della colonna, partendo appunto dall'alto e scendendo verso il basso fino alla metà. Quando invece viene trovato quello con idSouth e idWest uguali a VUOTO può essere avviato il thread che ordina la seconda metà partendo sta volta dal basso e risalendo fino a ordinare la parte mancante. \\
+		La sequenza di avvio di questi due thread non è importante e dipenderà da quando i thread descritti prima troveranno i pezzi necessari. \\
+		La metodologia di ordinamento della colonna è analoga a quella dell'algoritmo sequenziale, utilizzando quindi l'idSouth o l'idNorth per andare di passo in passo a ricavarsi i valori corretti direttamente dall'HashMap e inserirli nell'array bidimensionale finale;
 		\item \textbf{Ordino tutte le righe.} \\
-		TO DO.
+		Una volta completato il passo precedente, il main thread potrà lanciare l'avvio dei thread che si occupano dell'ordinamento delle righe a partire dal primo elemento di ciascuna di essa, ossia da quei pezzi che formano la prima colonna e che sono già stati ordinati. \\
+		Verranno avviati tanti task quante saranno le righe che compongono il puzzle, ma il numero di thread sarà limitato a un valore arbitrario a seconda del numero di righe per non far aumentare troppo i costi nel caso ci trovassimo di fronte a puzzle con un elevato numero di righe appunto. \\
+		La metodologia di ordinamento della riga è analoga a quella dell'algoritmo, ma invece di scorrere tutte le righe, si limiterà a ordinare quella decisa nel costruttore. \\
+		Solo quando tutti questi task saranno completati il main thread potrà continuare e terminare la sua esecuzione, andando ad effettuare le operazione finale richiesta dalla specifica.
 	\end{enumerate}
 % section algoritmo_di_risoluzione_parallelo_ (end)
 

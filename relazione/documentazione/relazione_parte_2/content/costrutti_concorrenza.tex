@@ -1,5 +1,5 @@
 % File: costrutti_concorrenza.tex
-% Created: 2014/01/13
+% Created: 2014-01-13
 % Author: Tesser Paolo
 % Email: p.tesser921@gmail.com
 % 
@@ -7,7 +7,7 @@
 % Modification History
 % Version	Modifier Date	Author			Change
 % ====================================================================
-% 0.0.1		2015/01/13		Tesser Paolo	inserita sezione capitolo
+% 0.0.1		2015-01-13		Tesser Paolo	inserita sezione capitolo
 % ====================================================================
 %
 
@@ -18,22 +18,23 @@ I costrutti che vengono utilizzate sono i seguenti.
 
 	\subsection{Oggetto condiviso} % (fold)
 	\label{sub:oggetto_condiviso}
-	TO DO
+	Viene utilizzato un oggetto condiviso tra tutti i thread, compreso il main, per scambiarsi messaggi sullo stato di ordinamento del puzzle e decidere quando procedere o meno alla fase successiva di risoluzione. \\
+	Per farlo utilizziamo la classe \textbf{SearchStatus} che contiene le diverse condizioni che i thread vanno a controllare per chiamare o meno i metodi \textbf{wait()} o \textbf{notifyAll()}, descritti successivamente.
 	% subsection oggetto_condiviso (end)
 
 	\subsubsection{Synchronized} % (fold)
 	\label{ssub:synchronized}
-	TO DO
+	Il metodo \textbf{synchronized} viene utilizzato per permettere ai thread di eseguire in maniera atomica delle determinate operazioni che rientrano in una sezione critica e cioè una parte di programma che usa l'oggetto condiviso \textbf{SearchStatus} dai diversi thread. Questo garantirà che gli altri thread avviati non modifichino lo stato di quello oggetto fintanto che il primo thread che ha preso il lock sull'oggetto non abbia finito.
 	% subsubsection synchronized (end)
 	
 	\subsection{wait()} % (fold)
 	\label{sub:wait_}
-	TO DO
+	Il metodo \textbf{wait()} viene invocato sull'oggetto condiviso solo dentro al main thread quando la condizione che si sta controllando è vera. Questo significa nel nostro caso che i thread lanciati, per un determinato ordinamento, non sono ancora terminati e il main dovrà aspettare che finiscano per proseguire il suo flusso.
 	% subsection wait_ (end)
 	
 	\subsection{notifyAll()} % (fold)
 	\label{sub:notifyall_}
-	TO DO
+	Il metodo \textbf{notifyAll()} viene invocato sull'oggetto condiviso quando viene soddisfatta una particolare condizione. Questo vuol dire e il main thread deve essere appunto risvegliato e controllare la sua condizione d'attesa. Nel caso fosse falsa vorrà dire che il compito dei thread che hanno invocato la notifyAll sarà terminato e l'esecuzione potrà continuare. 
 	% subsection notifyall_ (end)
 
 % section costrutti_di_concorrenza (end)
