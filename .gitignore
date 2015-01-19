@@ -22,3 +22,4 @@ progr_concorrente_distribuita.iml
 
 # file generato dai logger del programma
 src/log
+src/log.lck
