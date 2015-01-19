@@ -17,12 +17,12 @@ L'algoritmo scelto per risolvere il puzzle è di tipo sequenziale, come richiest
 Per arrivare alla soluzione vengono utilizzati due strutture dati come membri della classe PuzzleCharacter. \\
 La prima struttura è la collezione HashMap, nella quale vengono salvati in ordine casuale i tasselli ricevuti in input dal file di testo. Come chiave inserisco l'id del tassello mentre come valore uso l'intero pezzo (Tile). \\
 La seconda struttura dati è un array bidimensionale di oggetti Tile. In essa andranno memorizzati i vari pezzi in ordine corretto, questo contenitore infatti rappresenterà il puzzle nell'ordine corretto alla fine dell'algoritmo. \\
-Di seguito vengono esposte le seguenze che vengo eseguite, correlate da dei grafici che mostrano come esso agisca sulle strutture dati utilizzate.
+Di seguito vengono esposte le sequenze che vengo eseguite, correlate da dei grafici che mostrano come esso agisca sulle strutture dati utilizzate.
 
 	\begin{enumerate}
 		\item \textbf{Ricerco il primo elemento del puzzle (quello in alto a sinistra).} \\
-Per fare ciò scorro una sola volta la tavola hash per cercare il tassello che ha id nord e id ovest uguale alla stringa VUOTO. \\
-Una volta trovato salvo il pezzo nella prima posizione dell'array bidimensionale.
+		Per fare ciò scorro una sola volta la tavola hash per cercare il tassello che ha id nord e id ovest uguale alla stringa VUOTO. \\
+		Una volta trovato salvo il pezzo nella prima posizione dell'array bidimensionale.
 		\begin{figure}[htbp]
 			\centering
 			\includegraphics[width=15cm]{img/algpuzzle_step1.pdf}
@@ -31,9 +31,9 @@ Una volta trovato salvo il pezzo nella prima posizione dell'array bidimensionale
 		\end{figure}
 		
 		\item \textbf{Ordino la colonna più a sinistra (quella con i tasselli aventi id ovest uguale alla stringa VUOTO).} \\
-Prendo l'elemento trovato al passo successivo, mi estraggo l'id sud di esso e tramite i metodi della tavola hash mi ricavo il tassello reale a cui corrisponde. \\
-Una volta estratto lo inserisco nella posizione corretta. \\
-Continuo così da quello appena trovato fino a quando non trovo tutti quelli sottostanti.
+		Prendo l'elemento trovato al passo successivo, mi estraggo l'id sud di esso e tramite i metodi della tavola hash mi ricavo il tassello reale a cui corrisponde. \\
+		Una volta estratto lo inserisco nella posizione corretta. \\
+		Continuo così da quello appena trovato fino a quando non trovo tutti quelli sottostanti.
 		\begin{figure}[htbp]
 			\centering
 			\includegraphics[width=15cm]{img/algpuzzle_step2.pdf}
@@ -42,7 +42,7 @@ Continuo così da quello appena trovato fino a quando non trovo tutti quelli sot
 		\end{figure}
 
 		\item \textbf{Ordino tutte le righe.} \\
-Dopo aver ricavato tutta la prima colonna, eseguo, secondo lo stesso principio, anche la risoluzione per le righe, procedendo però sta volta con la ricerca del pezzo successivo a destra tramite l'id est.
+		Dopo aver ricavato tutta la prima colonna, eseguo, secondo lo stesso principio, anche la risoluzione per le righe, procedendo però sta volta con la ricerca del pezzo successivo a destra tramite l'id est.
 		\begin{figure}[htbp]
 			\centering
 			\includegraphics[width=15cm]{img/algpuzzle_step3.pdf}

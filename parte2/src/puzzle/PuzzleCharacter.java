@@ -95,7 +95,7 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
             String idWest = splitInputContent[5];
 
             /* se l'input della riga è corretto salvo la riga nel Tile divisa secondo le necessitaà */
-            Tile tileCurrent = new PuzzleCharacter.TileCharacter(id, idNorth,idSouth, idEast, idWest, c);
+            Tile tileCurrent = new TileCharacter(id, idNorth,idSouth, idEast, idWest, c);
             this.puzzleCharacterToSolve.put(id, tileCurrent);
 
             /**

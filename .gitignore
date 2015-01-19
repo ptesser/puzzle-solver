@@ -19,3 +19,7 @@ progr_concorrente_distribuita.iml
 # Astah temp file
 *.asta.bak
 *.asta.lock
+
+# file generato dai logger del programma
+src/log
+src/log.lck

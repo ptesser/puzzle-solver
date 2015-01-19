@@ -16,10 +16,10 @@
 
 \section{Organizzazione delle classi}
 La struttura dell'applicativo è composta da diversi package, con all'esterno di essi la classe \textbf{PuzzleSolver} responsabile dell'esecuzione del programma e dell'istanziazione delle classi in oggetti per risolvere il puzzle. \\
-Anche se tutte le classi all'interno di questi package lavorano bene assieme e tra loro esistono alcune dipendenze, si è deciso di tenere un minimo si separazione logica per le diverse componenti. \\
-Nei sotto capitoli seguenti  verranno illustrati i package utilizzati e le classi presenti in essi, mostrandone anche il comportamento tra di loro.
+Anche se tutte le classi all'interno di questi package lavorano bene assieme e tra loro esistono alcune dipendenze, si è deciso di tenere un minimo di separazione logica per le diverse componenti. \\
+Nei sotto capitoli seguenti verranno illustrati i package utilizzati e le classi presenti in essi, mostrandone anche il comportamento tra di loro.
 
-	\subsection{Package Puzzle}
+	\subsection{Package puzzle}
 Questo package contiene le classi che gestiscono le modalità con cui viene salvato un puzzle ricevuto in input da un file di testo. \\
 Abbiamo una classe \textbf{Tile} che rappresenta un tassello del puzzle. In essa sono solo presenti il suo identificatore e quelli dei tasselli intorno. \\
 E' stato fatto ciò per permettere, anche se non richiesto dalla specifica, che il puzzle possa essere in futuro formato da tasselli non di caratteri. \\
@@ -35,8 +35,8 @@ Al suo interno possiede una classe interna \textbf{TileCharacter} che estende \t
 			\label{Package Puzzle}
 		\end{figure}
 
-	\subsection{Package Solver}
-Questo package contiente le classi che gestiscono la risoluzione del puzzle. \\
+	\subsection{Package solver}
+Questo package contiene le classi che gestiscono la risoluzione del puzzle. \\
 E' stato deciso di slegarla dal contesto strutturale del \textbf{Puzzle} in quanto svolgono due compiti logicamente diversi. Questo permette una più facile manutenibilità del codice e una maggiore possibilità di riutilizzo. \\
 La presenza dell'interfaccia \textbf{SolverStrategy} permette la possibile implementazione di altri algoritmi di risoluzione senza andare a toccare le modalità introdotte nella classe \textbf{SolverAlgStrategy}. Sul client \textbf{PuzzleSolver} basterà cambiare l'algoritmo che si vorrà utilizzare. Questo, grazie al tentato utilizzo del design pattern Stratey, spiegato nel capitolo \textbf{\ref{DPS}}, sarà l'unico cambiamento da effettuare.
 		\begin{figure}[htbp]
@@ -46,7 +46,7 @@ La presenza dell'interfaccia \textbf{SolverStrategy} permette la possibile imple
 			\label{Package Solver}
 		\end{figure}
 	
-	\subsection{Package FileInputOutput}
+	\subsection{Package fileinputoutput}
 Questo package contiene le classi necessarie a fare leggere un file in input e a scrivere il contenuto di qualcosa in un file in output. \\
 Si è deciso di utilizzare un'interfaccia \textbf{FileIO} contenente il solo metodo \textbf{readContent} e non anche \textbf{writeContent} perché il primo ha una firma molto più generica e classica per la lettura di un file, permettendone così una ridefinizione in possibili sottoclassi future che potrebbero implementare un altro sistema per la lettura. \\
 Essendo però \textbf{writeContent} più specifico per il problema del puzzle, si è deciso di tenerlo solo nella classe che implementa l'interfaccia.
@@ -59,15 +59,17 @@ Essendo però \textbf{writeContent} più specifico per il problema del puzzle, s
 		\end{figure}
 
 	
-	\subsection{Design Pattern: Strategy} \label{DPS}
-In questa sezione verrà esposto come si è cercato di implementare il desing pattern strategy tra \textbf{Solver} e \textbf{Puzzle}. \\
+	\subsection{Design Pattern: Strategy} 
+	\label{DPS}
+In questa sezione verrà esposto come si è cercato di implementare il design pattern strategy tra \textbf{Solver} e \textbf{Puzzle}. \\
 Si è scelto di utilizzarlo in quanto si possono avere molte implementazioni dell'algoritmo (alcune più efficienti di altre) e per garantire che la scelta di uno o di un altro non necessiti la ricodifica di una parte della classe \textbf{Puzzle}. \\
-Seguendo la notazione espressa nel libro Design Patterns - Elementi per il riuso di software a oggetti di Gamma, Helm, Johnson, Vlissides viene illustrato il suo uso nel caso concreto del progetto. \\
+Seguendo la notazione espressa nel libro ``Design Patterns - Elementi per il riuso di software a oggetti" di Gamma, Helm, Johnson, Vlissides viene illustrato il suo uso nel caso concreto del progetto. \\
+
 \textbf{Partecipanti:}
 		\begin{itemize}
 			\item \textbf{Strategy} (SolverStrategy) :  dichiara un'interfaccia comune a tutti gli algoritmi supportati, nel nostro caso per ora solo uno. Context usa questa interfaccia per invocare l'algoritmo definito da un ConcreteStrategy;
 			\item \textbf{ConcreteStrategy} (SolverAlgStrategy) : implementa l'algoritmo usando l'interfaccia Strategy;
-			\item \textbf{Context} (Puzzle) : Contiene un riferimento a un oggetto Strategy. In particolare viene utilizzato il campo dati strategy. Viene configurato con un oggetto ConcreteStrategy; \\
+			\item \textbf{Context} (Puzzle) : contiene un riferimento a un oggetto Strategy. In particolare viene utilizzato il campo dati ``strategy''. Viene configurato con un oggetto ConcreteStrategy.
 		\end{itemize}
 \noindent
 \textbf{Collaborazioni:}
