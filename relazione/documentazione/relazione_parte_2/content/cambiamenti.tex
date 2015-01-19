@@ -1,5 +1,5 @@
 % File: cambiamenti.tex
-% Created: 2014/01/13
+% Created: 2015-01-13
 % Author: Tesser Paolo
 % Email: p.tesser921@gmail.com
 % 
@@ -7,7 +7,7 @@
 % Modification History
 % Version	Modifier Date	Author			Change
 % ====================================================================
-% 0.0.1		2015/01/13		Tesser Paolo	inserita sezione capitolo
+% 0.0.1		2015-01-13		Tesser Paolo	inserita sezione capitolo
 % ====================================================================
 %
 
@@ -36,7 +36,7 @@ Il client rappresentato dalla classe \textbf{PuzzleSolver} andrà modificato sol
 		La gerarchia creata ha alla base una classe astratta \textbf{BasicThread}, che implementa l'interfaccia \textbf{Runnable}, utilizzata per memorizzare i membri condivisi da tutti i task come il riferimento all'oggetto condiviso dai Thread per comunicare tra loro o il riferimento all'oggetto Puzzle da risolvere. \\
 		Viene estesa da \textbf{AngleTileThread}, \textbf{FirstColThread}, \textbf{RowThread}. \\
 		\textbf{AngleTileThread} è il task che ha il compito di cercare e ordinare, nella struttura che contiene il puzzle risolto, il pezzo avente idWest e idNorth uguali a VUOTO e quello avente e idSouth uguali a VUOTO. \\
-		\textbf{FirstColThread} è il task che ha il compito di ordinare la prima colonna del puzzle. Per farlo può partire dai precedenti pezzi trovati a seconda di quanto specificato nel paramentro attuale del task durante la sua creazione. I valori che potrà ricevere saranno: ``up'' per partire dal basso e salire fino alla metà della colonna, mentre ``down'' per partire dal basso e arrivare sempre fino alla metà. \\
+		\textbf{FirstColThread} è il task che ha il compito di ordinare la prima colonna del puzzle. Per farlo può partire dai precedenti pezzi trovati a seconda di quanto specificato nel parametro attuale del task durante la sua creazione. I valori che potrà ricevere saranno: ``up'' per partire dal basso e salire fino alla metà della colonna, mentre ``down'' per partire dal basso e arrivare sempre fino alla metà. \\
 		\textbf{RowThread} è il task che serve per riordinare tutte le righe del puzzle a partire dal primo elemento di ciascuna di essa. \\
 		\\
 		Tutti queste classi svolgono il loro compito nel metodo \textbf{run()}.
