@@ -47,16 +47,16 @@ public class PuzzleSolverClient {
             if (file instanceof FileIOMod1) {
                 ((FileIOMod1) file).writeContent(outputPath, outputContent, obj.getPuzzleRow(idClient), obj.getPuzzleCol(idClient));
             } else {
-                System.out.println("Impossibile scrivere il puzzle su file.");
+                System.out.println("Impossibile scrivere il puzzle su file!");
             }
 
 
         } catch (ConnectException e){
-            System.out.println("Problemi di connessione con il server");
+            System.out.println("Attenzione: problemi di connessione con il server!");
+            System.out.println("Riprovare in seguito!");
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 }
