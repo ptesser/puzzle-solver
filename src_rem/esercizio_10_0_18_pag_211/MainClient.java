@@ -14,7 +14,7 @@ public class MainClient {
         T1 t = new T1(obj);
         t.start();
         for (int i = 0; i < 10 ; i++){
-            System.out.println(i);
+            System.out.println("Client");
         }
 
     }
