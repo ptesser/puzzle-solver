@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Tesser Paolo
  *
  */
-public abstract class Puzzle {
+public abstract class Puzzle{
 
     /* MEMBRI PRIVATI della classe Puzzle */
     private int numCol;
@@ -16,13 +16,10 @@ public abstract class Puzzle {
     private SolverStrategy strategy;
 
     /* METODI PUBBLICI ASTRATTI della classe Puzzle */
-
     public abstract void solvePuzzle();
-    public abstract void showPuzzleTerminal();
     public abstract ArrayList<String> convertToArrayList();
 
     /* METODI PUBBLICI CONCRETI della classe Puzzle */
-
     /**
      * visibilità: public perchè necessita di essere chiamato dal client che vuole risolvere il puzzle.
      * final : perché non vogliamo che, estendendo la classe Puzzle, qualcuno modifichi il metodo in modo tale che possa impostare un algoritmo diverso da quello che sceglie il client.

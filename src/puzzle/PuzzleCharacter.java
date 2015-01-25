@@ -2,7 +2,6 @@ package puzzle;
 
 import myexception.IdEmptyExcpt;
 import myexception.NumFieldRowExcpt;
-
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -10,7 +9,7 @@ import java.util.regex.Pattern;
  * @author Tesser Paolo
  * @version 0.1
  */
-public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, modificare in implements
+public class PuzzleCharacter extends Puzzle {
 
     class TileCharacter extends Tile{
 
@@ -53,7 +52,6 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
      *                     e generato un oggetto TileCharacter contenente le info prelevate dala stringa.
      */
     public PuzzleCharacter (ArrayList<String> inputContent) throws NumFieldRowExcpt, IdEmptyExcpt{
-
         int numCol = 0;
         int numRow = 0;
 
@@ -114,7 +112,6 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
         // imposto i campi dati della classe Puzzle che viene estesa
         this.setNumCol(numCol);
         this.setNumRow(numRow);
-
         this.puzzleCharacterSolved = new Tile[numRow][numCol];
 
     }
@@ -132,7 +129,6 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
      *
      * @return il membro che contiene il Puzzle risolto in un array bidimensionale
      */
-    // @Override
     public final Tile[][] getPuzzleElementSolved(){
         return this.puzzleCharacterSolved.clone();
     }
@@ -143,7 +139,6 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
      * @param c indica la colonna su cui si andrà ad assegnare il nuovo oggetto
      * @param t indica l'oggetto che deve essere assegnato in poszione (r,c)
      */
-    // @Override
     public final void setPuzzleElementSolved(int r, int c, Tile t){
         this.puzzleCharacterSolved[r][c] = t;
     }
@@ -156,22 +151,6 @@ public class PuzzleCharacter extends Puzzle { // se cambiata in interfaccia, mod
         this.getStrategy().executeSolve(this);
     }
 
-    /**
-     * <p>Stampa a terminale il puzzle in forma matriciale R x C.</p>
-     */
-    @Override
-    public void showPuzzleTerminal() {
-        // le dichiaro fuori dal for così evito di fare ogni volta una chiamata di funzione
-        int lengthRow = this.getNumRow();
-        int lengthCol = this.getNumCol();
-
-        for (int k = 0; k < lengthRow; k++){
-            for (int w = 0; w < lengthCol; w++) {
-                System.out.print(((TileCharacter)this.puzzleCharacterSolved[k][w]).getCharacter());
-            }
-            System.out.println();
-        }
-    }
 
     /**
      *
