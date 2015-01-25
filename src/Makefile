@@ -6,8 +6,10 @@ S = solver
 IO = fileinputoutput
 E = myexception
 L = logger
+R = objrem
 
 compile:
+	$(JC) $(R)/*.java
 	$(JC) $(E)/*.java
 	$(JC) $(P)/*.java
 	$(JC) $(S)/*.java
@@ -15,4 +17,3 @@ compile:
 	$(JC) $(L)/*.java
 	$(JC) *.java
 	@echo "Compilazione completata"
-
