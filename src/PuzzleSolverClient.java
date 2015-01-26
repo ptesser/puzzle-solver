@@ -12,13 +12,14 @@ import java.util.ArrayList;
  * @version 0.1
  */
 
-public class PuzzleSolver {
+public class PuzzleSolverClient {
 
     public static void main( String[] args ){
         /* acquisisco i percorsi dei file di input e output che mi servono sotto forma di stringhe */
 
         String inputFile = args[0];
         String outputFile = args[1];
+        String nameServer = args[2];
 
         /* trasformo le stringhe in input dei percorsi del file in oggetti Path */
         Path inputPath = Paths.get(inputFile);
