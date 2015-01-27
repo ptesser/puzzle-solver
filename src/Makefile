@@ -16,4 +16,4 @@ compile:
 	$(JC) $(IO)/*.java
 	$(JC) $(L)/*.java
 	$(JC) *.java
-	@echo "Compilazione completata"
+	@echo -e "\x1B[01;32m Compilazione completata \x1B[0m"

@@ -23,6 +23,9 @@ loadserver:
 loadclient:
 	@cd $(SRC) && $(JA) PuzzleSolverClient ../$(input) ../$(output) $(server)
 
+killserver:
+	killall rmiregistry
+
 # Pulizia dei file .class
 clean:
 	$(RM) $(SRC)/*.class
@@ -32,4 +35,4 @@ clean:
 	$(RM) $(SRC)/$(S)/*.class
 	$(RM) $(SRC)/$(IO)/*.class
 	$(RM) $(SRC)/$(L)/*.class
-	@echo "Pulizia completata"
+	@echo -e "\x1B[01;32m Pulizia completata \x1B[0m"
