@@ -60,14 +60,12 @@ Per cercare di mantenere un livello di concorrenza tra i diversi client sul serv
 Si poteva implementare diversamente, magari attraverso un Thread Pool, ma non essendo richiesto dalla specifica si è deciso di limitarsi ad una cosa più semplice. \\
 Inoltre potevano essere implementati anche dei metodi per fare un po' di pulizia sulle HashMap varie, quando il client ha terminato la sua esecuzione.
 
-	\begin{comment}
-		\begin{figure}[htbp]
-			\centering
-			\centerline{n\includegraphics[scale=0.5]{img/objrem.pdf}}
-			\caption{Diagramma di sequenza - Relazione Client, Server, ObjRem, SolveThread, ConcreteThread}
-			\label{fig:dia_seq_rel_client_server}
-		\end{figure}	
-	\end{comment}	
+	\begin{figure}[htbp]
+		\centering
+		\centerline{n\includegraphics[scale=0.5]{img/seq_client_server.pdf}}
+		\caption{Diagramma di sequenza - Relazione Client, Server, ObjRem, SolveThread, ConcreteThread}
+		\label{fig:dia_seq_rel_client_server}
+	\end{figure}	
 
 % section logica_di_comunicazione_client_server (end)
 
