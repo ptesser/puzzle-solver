@@ -28,13 +28,16 @@
 			\item \textbf{make loadclient}: il quale lancerà il programma lato client prendendo tre file fissi, quali il file di input, quello di output e una stringa di testo che rappresenta il nome del server.n
 		\end{enumerate}
 	\noindent
+	\\ 
+	\textbf{Nota}: sia se si decida di avviare il programma lato server tramite make o tramite script bash, il registro rmi dovrà essere chiuso precedentemente. \\ \\
+	
 	Se si vuole invece lanciare il programma con dei file di test personalizzati e un server qualunque è possibile eseguire i seguenti script bash che lanceranno l'applicativo (la compilazione andrà effettuata precedentemente come descritto nella prima parte di questa sezione):
 	\begin{enumerate}
 		\item \textbf{bash puzzlesolverserver.sh ``nome del server''}: questo script riceve come input il nome del server. Lanciandolo verrà eseguito il comando per avviare il registro rmi e in seguito quello per avviare il main del server;
 		\item \textbf{bash puzzlesolverclient.sh input output ``nome del server''}: questo script riceve come input tre parametri, quali file di input, file di output e il nome del server. Lanciandolo verrà eseguito il comando per avviare il main del client.
 	\end{enumerate}
 	\noindent
-	\textbf{Attenzione}: lo script bash: puzzlesolverclient.sh, che lancia l'esecuzione del comando \emph{java} sul main del client principale va ad eseguire il comando in un livello inferiore rispetto ad esso. Bisogna fare quindi attenzione al percorso del file in input che potrebbe generare un'eccezione qualora non fosse corretto.
+	\textbf{Attenzione}: lo script bash: puzzlesolverclient.sh, che lancia l'esecuzione del comando \emph{java} sul main del client principale, va ad eseguire il comando in un livello inferiore rispetto ad esso. Bisogna fare quindi attenzione al percorso del file in input che potrebbe generare un'eccezione qualora non fosse corretto.
 
 
 % section note_sulla_compilazione (end)

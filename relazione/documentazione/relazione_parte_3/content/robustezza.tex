@@ -12,6 +12,19 @@
 %
 
 \section{Robustezza}
-TO DO
-
+Nel programma la robustezza è stata gestita in maniera approssimata. \\
+Di seguito però viene illustrato ciò che è stato fatto, utile per ampliare la gestione di eventi che possono verificarsi nella rete o in caso di caduta o del server o del client. \\
+In particolare non sono stati previsti metodi per recuperare i dati persi.
+	\subsection{Lato client} % (fold)
+	\label{sub:lato_client}
+	Se cade il client, il server non dovrà fare nulla, ma il client dovrà salvarsi in qualche modo il suo identificativo e il punto nel quale è riuscito a compiere l'ultima istruzione in maniera completa sul server prima di cadere. \\
+	Un approccio minimo viene effettuato tramite l'uso di una variabile statica nella classe \textbf{PuzzleSolverClient} denominata \textbf{STEP}.
+	% subsection lato_client (end)
+	
+	\subsection{Lato server} % (fold)
+	\label{sub:lato_server}
+	Se cade il server, dovranno essere presenti dei meccanismi per salvare i dati elaborati completamente per i diversi client. \\
+	Una volta salvati, il client, con la stessa variabile \textbf{STEP} citata in precedenza, potrà sapere fino a che punto il server ha effettuato il lavoro richiesto e se vuole potrà ripartire da la, una volta che il server sia tornato attivo. \\
+	In questa versione del programma, se il server cade, viene solo stampato su terminale il punto dal quale è caduto.
+	% subsection lato_server (end)
 
