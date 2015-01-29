@@ -1,0 +1,43 @@
+% File: note_tecniche.tex
+% Created: 2015-01-27
+% Author: Tesser Paolo
+% Email: p.tesser921@gmail.com
+% 
+%
+% Modification History
+% Version	Modifier Date	Author			Change
+% ====================================================================
+% 0.0.1		2015-01-27		Tesser Paolo	inserita sezione capitolo
+% ====================================================================
+% 0.0.2		2015-01-28		Tesser Paolo	spiegazione script bash
+% ====================================================================
+%
+
+\section{Note sulla compilazione} % (fold)
+\label{sec:note_sulla_compilazione}
+	\subsection{Versione JVM}
+	La versione di Java presente nella macchina utilizzata per l'implementazione del codice è quella 1.8.0\_20. \\
+	Non sono stati usati però costrutti particolari di questa versione e per l'utilizzo di API si è sempre fatto riferimento alla documentazione ufficiale della 1.7. \\
+	Per essere sicuri di rispettare la specifica che richiedeva al massimo la versione 1.7, si è testata la compilazione e l'esecuzione dell'applicativo sulle macchine di laboratorio dopo avere eseguito da terminale le istruzioni presenti al seguente link: \href{http://www.studenti.math.unipd.it/index.php?id=corsi#c620}{http://www.studenti.math.unipd.it} .
+
+	\subsection{Compilazione}
+	Dalla root principale consegnata è possibile avviare il comando per la compilazione sia dei file necessari al server sia quelli necessari al client attraverso l'istruzione \textbf{make}. \\
+	Se si vuole lanciare il programma, testandolo con degli input definiti dal fornitore per provare l'applicativo, è possibile eseguire sempre da root i seguenti comandi:
+		\begin{enumerate}
+			\item \textbf{make loadserver}: il quale come prima cosa avvierà il \textbf{registro rmi} e poi lancerà il programma lato server, prendendo come parametro una stringa di testo che rappresenta il nome del server;
+			\item \textbf{make loadclient}: il quale lancerà il programma lato client prendendo tre file fissi, quali il file di input, quello di output e una stringa di testo che rappresenta il nome del server.n
+		\end{enumerate}
+	\noindent
+	\\ 
+	\textbf{Nota}: sia se si decida di avviare il programma lato server tramite make o tramite script bash, il registro rmi dovrà essere chiuso precedentemente. \\ \\
+	
+	Se si vuole invece lanciare il programma con dei file di test personalizzati e un server qualunque è possibile eseguire i seguenti script bash che lanceranno l'applicativo (la compilazione andrà effettuata precedentemente come descritto nella prima parte di questa sezione):
+	\begin{enumerate}
+		\item \textbf{bash puzzlesolverserver.sh ``nome del server''}: questo script riceve come input il nome del server. Lanciandolo verrà eseguito il comando per avviare il registro rmi e in seguito quello per avviare il main del server;
+		\item \textbf{bash puzzlesolverclient.sh input output ``nome del server''}: questo script riceve come input tre parametri, quali file di input, file di output e il nome del server. Lanciandolo verrà eseguito il comando per avviare il main del client.
+	\end{enumerate}
+	\noindent
+	\textbf{Attenzione}: lo script bash: puzzlesolverclient.sh, che lancia l'esecuzione del comando \emph{java} sul main del client principale, va ad eseguire il comando in un livello inferiore rispetto ad esso. Bisogna fare quindi attenzione al percorso del file in input che potrebbe generare un'eccezione qualora non fosse corretto.
+
+
+% section note_sulla_compilazione (end)
