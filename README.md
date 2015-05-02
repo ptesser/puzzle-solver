@@ -4,7 +4,7 @@
 
 Questo repository è stato creato per gestire gli esercizi e il progetto del corso di Programmmazione ad Oggeti, Concorrente e Distrubuita.
 
-Il repository è composto da tre branch e segue un modello di sviluppo basato di esso: 
+Il repository è composto da tre branch e segue un modello di sviluppo basato sul seguente link: 
 
 (link : http://nvie.com/posts/a-successful-git-branching-model/)
  
