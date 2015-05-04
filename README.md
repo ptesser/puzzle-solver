@@ -11,7 +11,7 @@ Repository is composed by three branch and follow git branching model presented 
 (link : http://nvie.com/posts/a-successful-git-branching-model/)
  
 -  **master** : includes general information files of the repo;
--  **exercise** : includes exercies from the book of the course: http://www.editrice-esculapio.com/bookshop/Crafa-Oggetti-Concorrenza-Distribuzione-Programmare-a-diversi-livelli-di-astrazione#.VCKfxOe2ceg
+-  **exercise** : includes exercises from the book of the course: http://www.editrice-esculapio.com/bookshop/Crafa-Oggetti-Concorrenza-Distribuzione-Programmare-a-diversi-livelli-di-astrazione#.VCKfxOe2ceg
 -  **master-project** : used to manage stable release of the project;
 -  **develop-project** : used to develop the project;
 -  Others possible branch are used to develop new feature for the project, but they have a short life cycle.
