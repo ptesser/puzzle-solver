@@ -15,3 +15,7 @@ Repository is composed by three branch and follow git branching model presented 
 -  **master-project** : used to manage stable release of the project;
 -  **develop-project** : used to develop the project;
 -  Others possible branch are used to develop new feature for the project, but they have a short life cycle.
+
+## Documentation
+
+A more specific documentation for the architecture is in **relazione** directory.
