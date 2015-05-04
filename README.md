@@ -1,15 +1,21 @@
 # Puzzle Solver
 
-### What is this repository for?
+## Purpouse of repository
 
-Questo repository è stato creato per gestire gli esercizi e il progetto del corso di Programmmazione ad Oggeti, Concorrente e Distrubuita.
+This repository has been created to manage exercises and the project for the course of "Programmmazione ad Oggeti, Concorrente e Distrubuita" attend in university of Padua.
 
-Il repository è composto da tre branch e segue un modello di sviluppo basato sul seguente link: 
+## Structure of repository
+
+Repository is composed by three branch and follow git branching model presented in this link: 
 
 (link : http://nvie.com/posts/a-successful-git-branching-model/)
  
--  master : contiente i file di informazione generale della repo;
--  exercise : serve per lo svolgimento degli esercizi presenti sul libro di riferimento del corso;
--  master-project : serve per gestire le realese stabile del progetto necessario al superamento dell'esame.;
--  develop-project : serve per lo sviluppo del progetto necessario al superamento dell'esame.
--  Ulteriori branch serviranno allo sviluppo del progetto, ma avranno un ciclo di vita finito
+-  **master** : includes general information files of the repo;
+-  **exercise** : includes exercies from the book of the course: http://www.editrice-esculapio.com/bookshop/Crafa-Oggetti-Concorrenza-Distribuzione-Programmare-a-diversi-livelli-di-astrazione#.VCKfxOe2ceg
+-  **master-project** : used to manage stable release of the project;
+-  **develop-project** : used to develop the project;
+-  Others possible branch are used to develop new feature for the project, but they have a short life cycle.
+
+## Documentation
+
+A more specific documentation for the architecture is in **relazione** directory.
