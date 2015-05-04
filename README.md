@@ -1,8 +1,10 @@
 # Puzzle Solver
 
-### What is this repository for?
+## Scopo del repository
 
 Questo repository è stato creato per gestire gli esercizi e il progetto del corso di Programmmazione ad Oggeti, Concorrente e Distrubuita.
+
+## Struttura del repository
 
 Il repository è composto da tre branch e segue un modello di sviluppo basato sul seguente link: 
 
